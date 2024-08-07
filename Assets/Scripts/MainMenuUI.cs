@@ -12,10 +12,14 @@ public class MainMenuUI : MonoBehaviour {
     private void Awake(){
         hostButton.onClick.AddListener(() => {
             NetworkManager.Singleton.StartHost();
+            hostButton.gameObject.SetActive(false);
+            joinButton.gameObject.SetActive(false);
             Debug.Log("Started a Host");
         });
         joinButton.onClick.AddListener(() => {
             NetworkManager.Singleton.StartClient();
+            hostButton.gameObject.SetActive(false);
+            joinButton.gameObject.SetActive(false);
             Debug.Log("Started a Client");
         });
         quitButton.onClick.AddListener(Application.Quit);
