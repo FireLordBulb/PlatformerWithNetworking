@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MainMenuUI : MonoBehaviour {
     [SerializeField] private Button hostButton;
     [SerializeField] private Button joinButton;
+    [SerializeField] private Button quitButton;
     // Start is called before the first frame update
     void Awake()
     {
@@ -18,5 +19,6 @@ public class MainMenuUI : MonoBehaviour {
             NetworkManager.Singleton.StartClient();
             Debug.Log("Started a Client");
         });
+        quitButton.onClick.AddListener(Application.Quit);
     }
 }
