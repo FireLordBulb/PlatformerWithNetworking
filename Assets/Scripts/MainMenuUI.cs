@@ -4,7 +4,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NetworkUI : MonoBehaviour {
+public class MainMenuUI : MonoBehaviour {
     [SerializeField] private Button hostButton;
     [SerializeField] private Button joinButton;
     // Start is called before the first frame update
