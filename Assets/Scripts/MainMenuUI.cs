@@ -9,8 +9,7 @@ public class MainMenuUI : MonoBehaviour {
     [SerializeField] private Button joinButton;
     [SerializeField] private Button quitButton;
     // Start is called before the first frame update
-    void Awake()
-    {
+    private void Awake(){
         hostButton.onClick.AddListener(() => {
             NetworkManager.Singleton.StartHost();
             Debug.Log("Started a Host");
