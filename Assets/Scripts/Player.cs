@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -8,27 +9,49 @@ public class Player : NetworkBehaviour {
     [SerializeField] private SpriteRenderer body;
     [SerializeField] private float runningSpeed;
     [SerializeField] private float jumpForce;
+    private const int Up = +1, Down = -1, Right = +1, Left = -1;
     private Vector2 currentDirection;
     public void Awake(){
         
     }
     public void Move(Vector2 direction){
         currentDirection = direction;
-        if (0 < currentDirection.x){
-            body.flipX = false;
-        } else if (currentDirection.x < 0){
-            body.flipX = true;
+        int xMovement = (int)currentDirection.x;
+        switch(xMovement){
+            case Right:
+                SetBodySprite(false);
+                break;
+            case Left:
+                SetBodySprite(true);
+                break;
+            case 0:
+                break;
+            default:
+                // Invalid value for xMovement (only Right, Left & 0 are valid), client which sent "direction" must have been hacked in an attempt to cheat.
+                // Return early to ignore input to prevent the hacked values from affecting the server.
+                return;
         }
-        rigidBody.AddForce(new Vector2(currentDirection.x*runningSpeed, 0), ForceMode2D.Force);
+        rigidBody.AddForce(new Vector2(xMovement*runningSpeed, 0), ForceMode2D.Force);
+    }
+    private void SetBodySprite(bool flipX){
+        body.flipX = flipX;
+        SetBodySpriteRpc(flipX);
     }
     // TODO: Add holdable jump.
     public void Jump(){
         rigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
     public void Attack(){
-        
+        SetBodySpriteRpc(false);
     }
     public void FixedUpdate(){
         
+    }
+
+    [Rpc(SendTo.NotServer)]
+    private void SetBodySpriteRpc(bool flipX, RpcParams rpcParams = default){
+        if (rpcParams.Receive.SenderClientId == NetworkManager.ServerClientId){
+            body.flipX = flipX;
+        }
     }
 }
