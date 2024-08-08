@@ -10,10 +10,10 @@ public class Player : NetworkBehaviour {
     [SerializeField] private Blade blade;
     [SerializeField] private float runningSpeed;
     [SerializeField] private float jumpForce;
-    private const int Up = +1, Down = -1, Right = +1, Left = -1;
+    public const int Up = +1, Down = -1, Right = +1, Left = -1;
     private Vector2 currentDirection;
     public void Awake(){
-        
+        blade.Wielder = this;
     }
     public void Move(Vector2 direction){
         currentDirection = direction;
@@ -35,7 +35,7 @@ public class Player : NetworkBehaviour {
         rigidBody.AddForce(new Vector2(xMovement*runningSpeed, 0), ForceMode2D.Force);
     }
     private void SetBodySprite(bool flipX){
-        if (body.flipX == flipX){
+        if (body.flipX == flipX || blade.IsSwinging){
             return;
         }
         body.flipX = flipX;
@@ -48,7 +48,7 @@ public class Player : NetworkBehaviour {
         rigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
     public void Attack(){
-        
+        blade.StartSwinging(currentDirection.y, body.flipX);
     }
     public void FixedUpdate(){
         
