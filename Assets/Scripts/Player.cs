@@ -7,6 +7,7 @@ using UnityEngine;
 public class Player : NetworkBehaviour {
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer body;
+    [SerializeField] private Blade blade;
     [SerializeField] private float runningSpeed;
     [SerializeField] private float jumpForce;
     private const int Up = +1, Down = -1, Right = +1, Left = -1;
