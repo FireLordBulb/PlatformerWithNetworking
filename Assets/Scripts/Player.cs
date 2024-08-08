@@ -13,11 +13,10 @@ public class Player : NetworkBehaviour {
     public const int Up = +1, Down = -1, Right = +1, Left = -1;
     private Vector2 currentDirection;
     public void Awake(){
-        blade.Wielder = this;
+        blade.SetWielder(this);
     }
     public void Move(Vector2 direction){
-        currentDirection = direction;
-        int xMovement = (int)currentDirection.x;
+        int xMovement = (int)direction.x;
         switch(xMovement){
             case Right:
                 SetBodySprite(false);
@@ -32,6 +31,7 @@ public class Player : NetworkBehaviour {
                 // Return early to ignore input to prevent the hacked values from affecting the server.
                 return;
         }
+        currentDirection = direction;
         rigidBody.AddForce(new Vector2(xMovement*runningSpeed, 0), ForceMode2D.Force);
     }
     private void SetBodySprite(bool flipX){
@@ -49,7 +49,19 @@ public class Player : NetworkBehaviour {
     }
     public void Attack(){
         blade.StartSwinging(currentDirection.y, body.flipX);
+        // Todo send to other players.
     }
+    
+    private void OnTriggerEnter2D(Collider2D other){
+        if (!other.gameObject.TryGetComponent(out BladeHitbox hitbox) || hitbox.Wielder == this){
+            return;
+        }
+        print($"Client {OwnerClientId}'s player got hit!");
+        if (!IsServer){
+            return;
+        }
+    }
+    
     public void FixedUpdate(){
         
     }
