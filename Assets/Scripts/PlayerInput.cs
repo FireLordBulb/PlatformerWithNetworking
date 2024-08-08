@@ -33,6 +33,7 @@ public class PlayerInput : NetworkBehaviour {
 			}
 		};
      }
+	
      public void FixedUpdate(){
 	     Vector2 movementDirection = actions.Direction.ReadValue<Vector2>();
 #if UNITY_EDITOR
@@ -63,6 +64,7 @@ public class PlayerInput : NetworkBehaviour {
 		return player.IsOwner;
 #endif
      }
+     
      [Rpc(SendTo.Server)]
      private void JumpRpc(RpcParams rpcParams = default){
 	     if (IsPlayerOwnedBySender(rpcParams)){
@@ -81,7 +83,6 @@ public class PlayerInput : NetworkBehaviour {
 			 player.Move(direction);
 	     }
      }
-     
      private bool IsPlayerOwnedBySender(RpcParams rpcParams){
 	     return rpcParams.Receive.SenderClientId == player.OwnerClientId;
      }

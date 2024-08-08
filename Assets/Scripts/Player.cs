@@ -34,20 +34,27 @@ public class Player : NetworkBehaviour {
         rigidBody.AddForce(new Vector2(xMovement*runningSpeed, 0), ForceMode2D.Force);
     }
     private void SetBodySprite(bool flipX){
+        if (body.flipX == flipX){
+            return;
+        }
         body.flipX = flipX;
-        SetBodySpriteRpc(flipX);
+        if (IsServer){
+            SetBodySpriteRpc(flipX);
+        }
     }
     // TODO: Add holdable jump.
     public void Jump(){
         rigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
     public void Attack(){
-        SetBodySpriteRpc(false);
+        
     }
     public void FixedUpdate(){
         
     }
-
+  
+    // Should only be sent by server, the if-statement checks that this is the case on all unmodified clients,
+    // so a hacked client can't use this to alter the state of other clients.
     [Rpc(SendTo.NotServer)]
     private void SetBodySpriteRpc(bool flipX, RpcParams rpcParams = default){
         if (rpcParams.Receive.SenderClientId == NetworkManager.ServerClientId){
