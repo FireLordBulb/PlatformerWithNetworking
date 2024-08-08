@@ -9,11 +9,11 @@ public class Chat : NetworkBehaviour {
     private const int MaxChars128Bytes = 64;
     private NetworkVariable<bool> lastMessageIsComplete = new (true);
     [SerializeField] private TextMeshProUGUI text;
-    void Start(){
-        
-        SendChatMessage("Hello World");
+    [SerializeField] private TMP_InputField inputField;
+    private void Awake(){
+        inputField.onSubmit.AddListener(SendChatMessage);
     }
-    public void SendChatMessage(string message){
+    private void SendChatMessage(string message){
         int unsentCharsInMessage = message.Length;
         if (unsentCharsInMessage <= MaxChars128Bytes){
             SubmitMessageRPC(new FixedString128Bytes(message), NetworkManager.LocalClientId);
@@ -25,18 +25,19 @@ public class Chat : NetworkBehaviour {
             SubmitMessageRPC(new FixedString128Bytes(message.Substring(message.Length-unsentCharsInMessage)), NetworkManager.LocalClientId);
         }
         EndMessageRPC();
+        inputField.text = "";
     }
     [Rpc(SendTo.Server)]
-    public void EndMessageRPC(){
+    private void EndMessageRPC(){
         lastMessageIsComplete.Value = true;
     }
     [Rpc(SendTo.Server)]
-    public void SubmitMessageRPC(FixedString128Bytes message, ulong sender){
+    private void SubmitMessageRPC(FixedString128Bytes message, ulong sender){
         UpdateMessageRPC(message, sender);
         lastMessageIsComplete.Value = false;
     }
     [Rpc(SendTo.Everyone)]
-    public void UpdateMessageRPC(FixedString128Bytes message, ulong sender){
+    private void UpdateMessageRPC(FixedString128Bytes message, ulong sender){
         if (lastMessageIsComplete.Value){
             text.text += $"\n{sender}: ";
         }
