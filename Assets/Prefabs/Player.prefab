@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2729028333
+  GlobalObjectIdHash: 368664132
   InScenePlacedSourceGlobalObjectIdHash: 368664132
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -531,7 +531,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0.2
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -559,7 +559,9 @@ MonoBehaviour:
   body: {fileID: 7480487452929741155}
   blade: {fileID: 3401466913576206029}
   runningSpeed: 15
-  jumpForce: 7
+  jumpStartForce: 160
+  jumpHoldForce: 30
+  jumpHoldTime: 0.25
 --- !u!114 &8889410910896296260
 MonoBehaviour:
   m_ObjectHideFlags: 0

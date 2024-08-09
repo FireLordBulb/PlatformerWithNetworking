@@ -9,9 +9,12 @@ public class Player : NetworkBehaviour {
     [SerializeField] private SpriteRenderer body;
     [SerializeField] private Blade blade;
     [SerializeField] private float runningSpeed;
-    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpStartForce;
+    [SerializeField] private float jumpHoldForce;
+    [SerializeField] private float jumpHoldTime;
     public const int Up = +1, Down = -1, Right = +1, Left = -1;
     private Vector2 currentDirection;
+    private float jumpHoldTimeLeft = 0;
     public void Awake(){
         blade.SetWielder(this);
     }
@@ -43,12 +46,14 @@ public class Player : NetworkBehaviour {
             SetBodySpriteRpc(flipX);
         }
     }
-    // TODO: Add holdable jump.
+    // TODO: Add double jump.
     public void Jump(){
-        rigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        // TODO check if is on ground.
+        rigidBody.AddForce(new Vector2(0, jumpStartForce), ForceMode2D.Force);
+        jumpHoldTimeLeft = jumpHoldTime;
     }
     public void StopJumping(){
-        
+        jumpHoldTimeLeft = 0;
     }
     public void Attack(){
         blade.StartSwinging(currentDirection.y, body.flipX);
@@ -68,7 +73,15 @@ public class Player : NetworkBehaviour {
     }
     
     public void FixedUpdate(){
-        
+        if (jumpHoldTimeLeft == 0){
+            return;
+        }
+        jumpHoldTimeLeft -= Time.fixedDeltaTime;
+        if (jumpHoldTimeLeft < 0){
+            jumpHoldTimeLeft = 0;
+            return;
+        }
+        rigidBody.AddForce(new Vector2(0, jumpHoldForce), ForceMode2D.Force);
     }
     
     [Rpc(SendTo.Everyone)]
