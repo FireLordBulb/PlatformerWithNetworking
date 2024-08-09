@@ -27,6 +27,10 @@ public class Chat : NetworkBehaviour {
     }
     [Rpc(SendTo.Server)]
     private void SubmitMessageRPC(string message, RpcParams rpcParams = default){
+        message = message.Trim();
+        if (message.Length == 0){
+            return;
+        }
         ulong senderClientId = rpcParams.Receive.SenderClientId;
         if (!usernames.TryGetValue(senderClientId, out string username)){
             username = $"{senderClientId}";
@@ -38,5 +42,22 @@ public class Chat : NetworkBehaviour {
         if (rpcParams.Receive.SenderClientId == NetworkManager.ServerClientId){
             text.text += $"\n{chatLine}";
         }
+    }
+    [Rpc(SendTo.Server)]
+    private void UpdateUsernameRPC(string newUsername, RpcParams rpcParams = default){
+        newUsername = newUsername.Trim();
+        if (newUsername.Length == 0){
+            return;
+        }
+        ulong senderClientId = rpcParams.Receive.SenderClientId;
+        usernames.TryGetValue(senderClientId, out string currentUsername);
+        if (newUsername.Equals(currentUsername)){
+            return;
+        }
+        if (usernames.ContainsValue(newUsername)){
+            // TODO: Send message back saying username taken.
+            return;
+        }
+        usernames.Add(senderClientId, newUsername);
     }
 }
