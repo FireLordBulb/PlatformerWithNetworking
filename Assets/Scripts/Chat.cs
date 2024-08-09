@@ -9,7 +9,7 @@ public class Chat : NetworkBehaviour {
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private TMP_InputField inputField;
 
-    private Dictionary<ulong, string> usernames = new();
+    private readonly Dictionary<ulong, string> usernames = new();
     private void Awake(){
         inputField.onSubmit.AddListener(message => {
             SendChatMessage(message);
