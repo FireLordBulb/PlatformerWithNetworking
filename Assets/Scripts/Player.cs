@@ -49,7 +49,9 @@ public class Player : NetworkBehaviour {
     }
     public void Attack(){
         blade.StartSwinging(currentDirection.y, body.flipX);
-        // Todo send to other players.
+        if (IsServer){
+            StartSwingingRpc();
+        }
     }
     
     private void OnTriggerEnter2D(Collider2D other){
@@ -65,7 +67,13 @@ public class Player : NetworkBehaviour {
     public void FixedUpdate(){
         
     }
-  
+    
+    [Rpc(SendTo.Everyone)]
+    private void StartSwingingRpc(RpcParams rpcParams = default){
+        if (rpcParams.Receive.SenderClientId == NetworkManager.ServerClientId){
+            blade.StartSwinging(currentDirection.y, body.flipX);
+        }
+    }
     // Should only be sent by server, the if-statement checks that this is the case on all unmodified clients,
     // so a hacked client can't use this to alter the state of other clients.
     [Rpc(SendTo.NotServer)]
