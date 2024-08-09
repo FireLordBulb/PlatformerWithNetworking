@@ -4,28 +4,40 @@ using TMPro;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Chat : NetworkBehaviour {
-    private const int MaxChars128Bytes = 64;
-    private NetworkVariable<bool> lastMessageIsComplete = new (true);
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private TMP_InputField inputField;
+    
+    private const int MaxChars128Bytes = 64;
+    private readonly NetworkVariable<bool> lastMessageIsComplete = new(true);
+
     private void Awake(){
-        inputField.onSubmit.AddListener(SendChatMessage);
+        inputField.onSubmit.AddListener(message => {
+            inputField.text = message.Trim();
+            SendChatMessage(inputField.text);
+            inputField.ActivateInputField();
+            inputField.text = "";
+        });
+        inputField.onValueChanged.AddListener(message => inputField.text = message.TrimEnd('\n').TrimEnd('\v'));
     }
     private void SendChatMessage(string message){
         int unsentCharsInMessage = message.Length;
+        if (unsentCharsInMessage == 0){
+            return;
+        }
         if (unsentCharsInMessage <= MaxChars128Bytes){
             SubmitMessageRPC(new FixedString128Bytes(message), NetworkManager.LocalClientId);
         } else {
             while (MaxChars128Bytes < unsentCharsInMessage){
-                SubmitMessageRPC(new FixedString128Bytes(message.Substring(message.Length-unsentCharsInMessage, MaxChars128Bytes)), NetworkManager.LocalClientId);
+                FixedString128Bytes messageChunk = new(message.Substring(message.Length - unsentCharsInMessage, MaxChars128Bytes));
+                SubmitMessageRPC(messageChunk, NetworkManager.LocalClientId);
                 unsentCharsInMessage -= MaxChars128Bytes;
             }
-            SubmitMessageRPC(new FixedString128Bytes(message.Substring(message.Length-unsentCharsInMessage)), NetworkManager.LocalClientId);
+            SubmitMessageRPC(new FixedString128Bytes(message[^unsentCharsInMessage..]), NetworkManager.LocalClientId);
         }
         EndMessageRPC();
-        inputField.text = "";
     }
     [Rpc(SendTo.Server)]
     private void EndMessageRPC(){
