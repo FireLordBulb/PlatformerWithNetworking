@@ -23,6 +23,15 @@ public class PlayerInput : NetworkBehaviour {
 				JumpRpc();
 			}
 		};
+		actions.Jump.canceled += _ => {
+			if (!CanControlPlayer()){
+				return;
+			}
+			player.StopJumping();
+			if (!IsServer){
+				StopJumpingRpc();
+			}
+		};
 		actions.Attack.performed += _ => {
 			if (!CanControlPlayer()){
 				return;
@@ -32,9 +41,9 @@ public class PlayerInput : NetworkBehaviour {
 				AttackRpc();
 			}
 		};
-     }
+	}
 	
-     public void FixedUpdate(){
+	public void FixedUpdate(){
 	     Vector2 movementDirection = actions.Direction.ReadValue<Vector2>();
 #if UNITY_EDITOR
 	     if (isHacked){
@@ -69,6 +78,12 @@ public class PlayerInput : NetworkBehaviour {
      private void JumpRpc(RpcParams rpcParams = default){
 	     if (IsPlayerOwnedBySender(rpcParams)){
 		     player.Jump();
+	     }
+     }
+     [Rpc(SendTo.Server)]
+     private void StopJumpingRpc(RpcParams rpcParams = default){
+	     if (IsPlayerOwnedBySender(rpcParams)){
+		     player.StopJumping();
 	     }
      }
      [Rpc(SendTo.Server)]

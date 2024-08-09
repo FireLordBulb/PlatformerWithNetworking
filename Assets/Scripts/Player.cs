@@ -47,6 +47,9 @@ public class Player : NetworkBehaviour {
     public void Jump(){
         rigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
+    public void StopJumping(){
+        
+    }
     public void Attack(){
         blade.StartSwinging(currentDirection.y, body.flipX);
         if (IsServer){
