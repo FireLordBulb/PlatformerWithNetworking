@@ -1,0 +1,2256 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3969455404289299437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2890131113685869247}
+  m_Layer: 0
+  m_Name: Underground Layer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2890131113685869247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3969455404289299437}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4293291881813193448}
+  - {fileID: 1949633461269140555}
+  - {fileID: 6039974978605646763}
+  - {fileID: 7441794379683885462}
+  - {fileID: 9094908817776439714}
+  - {fileID: 3779404903273487123}
+  - {fileID: 6922537546594656271}
+  - {fileID: 9199828916033362427}
+  - {fileID: 859244030834918072}
+  - {fileID: 4604314753614996847}
+  - {fileID: 2747558175313967634}
+  - {fileID: 2091470052792739018}
+  - {fileID: 6671587340000798986}
+  - {fileID: 6769316072292320876}
+  - {fileID: 4251836618558353157}
+  - {fileID: 3010405414659174914}
+  - {fileID: 1021823179428647285}
+  - {fileID: 7192545775886579306}
+  - {fileID: 2202435053083217579}
+  - {fileID: 824066729149540037}
+  - {fileID: 1124818511127545025}
+  - {fileID: 7291983393944037208}
+  - {fileID: 3307369726942686393}
+  - {fileID: 5181537752816234198}
+  - {fileID: 7332984555826972041}
+  - {fileID: 7601988124982055933}
+  - {fileID: 2974051122195219239}
+  - {fileID: 9050953977705130099}
+  - {fileID: 3069447066238799009}
+  - {fileID: 6767868033507019734}
+  - {fileID: 7508014132643447430}
+  - {fileID: 5486386841753116956}
+  - {fileID: 3899671817906910106}
+  - {fileID: 6142710799323849121}
+  - {fileID: 714209498525009075}
+  - {fileID: 8237002733569425839}
+  - {fileID: 2104790093085506703}
+  - {fileID: 5597425127373424810}
+  - {fileID: 7389572110861877634}
+  - {fileID: 4052565893075278838}
+  - {fileID: 4042225231575392456}
+  - {fileID: 4746520186482773350}
+  - {fileID: 4562272917681837119}
+  - {fileID: 2908529155660743741}
+  - {fileID: 4157266798044199731}
+  - {fileID: 5724701127663272337}
+  - {fileID: 1280062622221177842}
+  - {fileID: 187508897068118180}
+  - {fileID: 6801853363993746387}
+  - {fileID: 8609851632556039964}
+  - {fileID: 5354159121366421941}
+  - {fileID: 391656594795220321}
+  - {fileID: 5279836195690073817}
+  - {fileID: 5261877337072191997}
+  - {fileID: 3478865888021998902}
+  - {fileID: 7055608263597071298}
+  - {fileID: 782691451896489084}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &56376716452924940
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.119999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (36)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &2104790093085506703 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 56376716452924940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &70819327582721609
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (11)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &2091470052792739018 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 70819327582721609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &246961444409326632
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.4000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (18)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &2202435053083217579 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 246961444409326632}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &500885196219967176
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.279999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &1949633461269140555 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 500885196219967176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &882229503716712817
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.519999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (46)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &1280062622221177842 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 882229503716712817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1324574352180672066
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (20)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &1124818511127545025 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 1324574352180672066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1428700906358186998
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.6799994
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (16)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &1021823179428647285 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 1428700906358186998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1446953875609482800
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.8399982
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (34)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &714209498525009075 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 1446953875609482800}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1590149758609174587
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (8)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &859244030834918072 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 1590149758609174587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1626451965417739334
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.7599993
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (19)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &824066729149540037 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 1626451965417739334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1666701957510633215
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (56)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &782691451896489084 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 1666701957510633215}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1770632334042578914
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.719999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (51)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &391656594795220321 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 1770632334042578914}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2263014257788486183
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.159999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (47)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &187508897068118180 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 2263014257788486183}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2456769657455450092
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.160001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (9)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &4604314753614996847 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 2456769657455450092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2498809674973275836
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.959998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (42)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &4562272917681837119 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 2498809674973275836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2615580946831493552
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.239999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (44)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &4157266798044199731 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 2615580946831493552}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2720286421104814453
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.039999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (39)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &4052565893075278838 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 2720286421104814453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2730627564752392779
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.6799994
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (40)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &4042225231575392456 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 2730627564752392779}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2767790841770786923
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &4293291881813193448 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 2767790841770786923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2809247551360064902
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.959999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (14)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &4251836618558353157 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 2809247551360064902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2994570080465234320
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.719999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &3779404903273487123 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 2994570080465234320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3162538456533008665
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.5599985
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (32)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &3899671817906910106 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 3162538456533008665}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3295112330863353781
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (54)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &3478865888021998902 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 3295112330863353781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3466608555930705466
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.8400002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (22)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &3307369726942686393 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 3466608555930705466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3763574311293862017
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (15)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &3010405414659174914 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 3763574311293862017}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3798802357565043108
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.2800007
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (26)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &2974051122195219239 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 3798802357565043108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3864324842717083326
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.599999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (43)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &2908529155660743741 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 3864324842717083326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3991632907492900386
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (28)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &3069447066238799009 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 3991632907492900386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4313521251446933649
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (10)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &2747558175313967634 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 4313521251446933649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4615217895554381039
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.599998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (13)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &6769316072292320876 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 4615217895554381039}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4616665970380945749
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6399994
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (29)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &6767868033507019734 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 4616665970380945749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4714073046340950921
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (12)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &6671587340000798986 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 4714073046340950921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4870912084419570000
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (48)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &6801853363993746387 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 4870912084419570000}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5242955012199387938
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.199998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (33)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &6142710799323849121 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 5242955012199387938}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5633915305531109672
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &6039974978605646763 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 5633915305531109672}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5788235324499474985
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (37)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &5597425127373424810 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 5788235324499474985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5899278871517893535
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.9199991
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (31)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &5486386841753116956 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 5899278871517893535}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5949189666606232338
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.879998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (45)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &5724701127663272337 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 5949189666606232338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6104702038099344474
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.359999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (52)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &5279836195690073817 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 6104702038099344474}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6122657627274296190
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (53)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &5261877337072191997 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 6122657627274296190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6318610172653495094
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (50)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &5354159121366421941 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 6318610172653495094}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6491226383987760213
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.1999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (23)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &5181537752816234198 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 6491226383987760213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6639145693722066917
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (41)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &4746520186482773350 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 6639145693722066917}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6946397337918708464
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.6400013
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (27)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &9050953977705130099 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 6946397337918708464}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7084626804934306680
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &9199828916033362427 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 7084626804934306680}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7190672184559862561
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &9094908817776439714 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 7190672184559862561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7674603610093202847
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.439999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (49)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &8609851632556039964 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 7674603610093202847}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8048578476531987244
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.4799986
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (35)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &8237002733569425839 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 8048578476531987244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8395363705400058238
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.9200001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (25)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &7601988124982055933 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 8395363705400058238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8488210181850378245
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.2799978
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (30)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &7508014132643447430 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 8488210181850378245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8664366826306074378
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.5600014
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (24)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &7332984555826972041 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 8664366826306074378}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8705362835263985115
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.4800005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (21)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &7291983393944037208 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 8705362835263985115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8843782880121750293
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &7441794379683885462 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 8843782880121750293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8894879253935862529
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.3999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (38)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &7389572110861877634 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 8894879253935862529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8941742537670617409
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.279999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (55)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &7055608263597071298 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 8941742537670617409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9073686842021040780
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.080001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &6922537546594656271 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 9073686842021040780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9091909365265089769
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890131113685869247}
+    m_Modifications:
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.039999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732543817793383457, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+      propertyPath: m_Name
+      value: IceBlockMatte (17)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+--- !u!4 &7192545775886579306 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2161161723188933251, guid: f807f3f666d0c364bb02c97eb7b04c94, type: 3}
+  m_PrefabInstance: {fileID: 9091909365265089769}
+  m_PrefabAsset: {fileID: 0}
