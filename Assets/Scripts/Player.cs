@@ -7,14 +7,18 @@ using UnityEngine;
 public class Player : NetworkBehaviour {
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer body;
+    [SerializeField] private Collider2D legCollider;
     [SerializeField] private Blade blade;
     [SerializeField] private float runningSpeed;
     [SerializeField] private float jumpStartForce;
     [SerializeField] private float jumpHoldForce;
     [SerializeField] private float jumpHoldTime;
     public const int Up = +1, Down = -1, Right = +1, Left = -1;
+    private const float MaxGroundDistance = 0.02f;
     private Vector2 currentDirection;
-    private float jumpHoldTimeLeft = 0;
+    private float jumpHoldTimeLeft;
+    private bool isOnGround;
+    private bool canDoubleJump;
     public void Awake(){
         blade.SetWielder(this);
     }
@@ -48,7 +52,15 @@ public class Player : NetworkBehaviour {
     }
     // TODO: Add double jump.
     public void Jump(){
-        // TODO check if is on ground.
+        if (!isOnGround){
+            if (!canDoubleJump){
+                return;
+            }
+            canDoubleJump = false;
+        } else {
+            isOnGround = false;
+            canDoubleJump = true;
+        }
         rigidBody.AddForce(new Vector2(0, jumpStartForce), ForceMode2D.Force);
         jumpHoldTimeLeft = jumpHoldTime;
     }
@@ -73,6 +85,23 @@ public class Player : NetworkBehaviour {
     }
     
     public void FixedUpdate(){
+        if (jumpHoldTimeLeft == 0){
+            Bounds legBounds = legCollider.bounds;
+            CheckForGroundBelow(legBounds.min.x, legBounds.max.x, (legBounds.min.x+legBounds.max.x)/2);
+        }
+        JumpHoldUpdate();
+    }
+
+    private void CheckForGroundBelow(params float[] xValues){
+        // ReSharper disable once LoopCanBeConvertedToQuery
+        foreach (float x in xValues){
+            if (Physics2D.Raycast(new Vector2(x, transform.position.y), -Vector2.up, MaxGroundDistance)){
+                isOnGround = true;
+                return;
+            }
+        }
+    }
+    private void JumpHoldUpdate(){
         if (jumpHoldTimeLeft == 0){
             return;
         }
