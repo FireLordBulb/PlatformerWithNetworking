@@ -598,7 +598,7 @@ MonoBehaviour:
   blade: {fileID: 3401466913576206029}
   runningSpeed: 15
   jumpStartForce: 160
-  jumpHoldForce: 30
+  jumpHoldForce: 34
   jumpHoldTime: 0.25
 --- !u!114 &8889410910896296260
 MonoBehaviour:
