@@ -21,6 +21,7 @@ public class Player : NetworkBehaviour {
     private Vector2 localCurrentDirection;
     private float jumpHoldTimeLeft;
     private bool isOnGround;
+    private bool isOnSolidGround;
     private bool canDoubleJump;
     public void Awake(){
         blade.SetWielder(this);
@@ -77,6 +78,7 @@ public class Player : NetworkBehaviour {
             canDoubleJump = false;
         } else {
             isOnGround = false;
+            isOnSolidGround = false;
             canDoubleJump = true;
         }
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
@@ -87,7 +89,7 @@ public class Player : NetworkBehaviour {
         jumpHoldTimeLeft = 0;
     }
     public void Attack(){
-        blade.StartSwinging((!IsServer && IsOwner ? localCurrentDirection : networkCurrentDirection.Value).y, body.flipX);
+        blade.StartSwinging((!IsServer && IsOwner ? localCurrentDirection : networkCurrentDirection.Value).y, body.flipX, isOnSolidGround);
         if (IsServer){
             StartSwingingRpc();
         }
@@ -114,15 +116,19 @@ public class Player : NetworkBehaviour {
     private void CheckForGroundBelow(params float[] xValues){
         // ReSharper disable once LoopCanBeConvertedToQuery
         foreach (float x in xValues){
-            if (Physics2D.Raycast(new Vector2(x, transform.position.y), -Vector2.up, MaxGroundDistance)){
-                isOnGround = true;
-                return;
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(x, transform.position.y), -Vector2.up, MaxGroundDistance);
+            if (!hit){
+                continue;
             }
-            if (isOnGround){
-                canDoubleJump = true;
-            }
-            isOnGround = false;
+            isOnGround = true;
+            isOnSolidGround = hit.collider.attachedRigidbody == null;
+            return;
         }
+        if (isOnGround){
+            canDoubleJump = true;
+        }
+        isOnGround = false;
+        isOnSolidGround = false;
     }
     private void JumpHoldUpdate(){
         if (jumpHoldTimeLeft == 0){
@@ -139,7 +145,7 @@ public class Player : NetworkBehaviour {
     [Rpc(SendTo.Everyone)]
     private void StartSwingingRpc(RpcParams rpcParams = default){
         if (rpcParams.Receive.SenderClientId == NetworkManager.ServerClientId){
-            blade.StartSwinging(networkCurrentDirection.Value.y, body.flipX);
+            blade.StartSwinging(networkCurrentDirection.Value.y, body.flipX, isOnSolidGround);
         }
     }
     // Should only be sent by server, the if-statement checks that this is the case on all unmodified clients,
