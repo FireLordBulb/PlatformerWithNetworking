@@ -17,7 +17,6 @@ public class HealthUI : MonoBehaviour {
             return;
         }
         Instance = this;
-        print("HealthUI instanced!");
     }
     public void SetHeartsLeft(int heartsLeft){
         for (int i = 0; i < hearts.Length; i++){
