@@ -5,6 +5,7 @@ using Unity.Netcode;
 using UnityEngine;
 
 public class Player : NetworkBehaviour {
+    [SerializeField] private NetworkObject networkObject;
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer body;
     [SerializeField] private Collider2D legCollider;
@@ -17,6 +18,7 @@ public class Player : NetworkBehaviour {
     [SerializeField] private float knockbackImpulse;
     [SerializeField] private float sideUpwardsKnockbackImpulse;
     [SerializeField] private float pogoImpulse;
+    [SerializeField] private int maxHealth;
     
     public const int Up = +1, Down = -1, Right = +1, Left = -1;
     private const float MaxGroundDistance = 0.02f;
@@ -25,11 +27,13 @@ public class Player : NetworkBehaviour {
     private Vector2 localCurrentDirection;
     private float invisTimeLeft;
     private float jumpHoldTimeLeft;
+    private int healthPoints;
     private bool isOnGround;
     private bool isOnSolidGround;
     private bool canDoubleJump;
     public void Awake(){
         blade.SetWielder(this);
+        healthPoints = maxHealth;
     }
     
     public void Move(Vector2 direction){
@@ -103,19 +107,23 @@ public class Player : NetworkBehaviour {
         if (0 < invisTimeLeft || !other.gameObject.TryGetComponent(out BladeHitbox hitbox) || hitbox.Wielder == this){
             return;
         }
-        print($"Client {OwnerClientId}'s player got hit!");
         invisTimeLeft = invisTime;
         Vector2 knockback = hitbox.Blade.SwingDirection*knockbackImpulse;
         if (knockback.y == 0){
             knockback.y += sideUpwardsKnockbackImpulse;
         }
         AddYCancelingImpulse(knockback);
-
         hitbox.Wielder.Pogo();
         if (!IsServer){
             return;
         }
-        // Reduce HP and cause game over.
+        healthPoints--;
+        UpdateHealthPointsRpc(healthPoints);
+        if (0 < healthPoints){
+            return;
+        }
+        print($"Client {OwnerClientId}'s player died!");
+        networkObject.Despawn();
     }
     private void Pogo(){
         if (blade.HasPogoed || blade.SwingDirection != new Vector2(0, Down)){
@@ -179,6 +187,15 @@ public class Player : NetworkBehaviour {
         if (rpcParams.Receive.SenderClientId == NetworkManager.ServerClientId){
             blade.StartSwinging(networkCurrentDirection.Value.y, body.flipX, isOnSolidGround);
         }
+    }
+    [Rpc(SendTo.Owner)]
+    private void UpdateHealthPointsRpc(int serverHealthPoints, RpcParams rpcParams = default){
+        if (rpcParams.Receive.SenderClientId != NetworkManager.ServerClientId){
+            return;
+        }
+        healthPoints = serverHealthPoints;
+        HealthUI.Instance.SetHeartsLeft(healthPoints);
+        print($"Client {OwnerClientId}'s player got hit!\n{healthPoints} health points left.");
     }
     // Should only be sent by server, the if-statement checks that this is the case on all unmodified clients,
     // so a hacked client can't use this to alter the state of other clients.

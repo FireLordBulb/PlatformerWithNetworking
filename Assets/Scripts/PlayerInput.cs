@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInput : NetworkBehaviour {
 	[SerializeField] private Player player;
@@ -10,37 +11,45 @@ public class PlayerInput : NetworkBehaviour {
 #if UNITY_EDITOR
 	private bool isHacked;
 #endif
-	public void Awake(){
+	private void Awake(){
 		Controls controls = new();
 		controls.Enable();
 		actions = controls.MouseAndKeyboard;
-		actions.Jump.performed += _ => {
-			if (!CanControlPlayer()){
-				return;
-			}
-			player.Jump();
-			if (!IsServer){
-				JumpRpc();
-			}
-		};
-		actions.Jump.canceled += _ => {
-			if (!CanControlPlayer()){
-				return;
-			}
-			player.StopJumping();
-			if (!IsServer){
-				StopJumpingRpc();
-			}
-		};
-		actions.Attack.performed += _ => {
-			if (!CanControlPlayer()){
-				return;
-			}
-			player.Attack();
-			if (!IsServer){
-				AttackRpc();
-			}
-		};
+		actions.Jump.performed += JumpPerformed;
+		actions.Jump.canceled += StopJumpingPerformed;
+		actions.Attack.performed += AttackPerformed;
+	}
+	private void OnDisable(){
+		actions.Jump.performed -= JumpPerformed;
+		actions.Jump.canceled -= StopJumpingPerformed;
+		actions.Attack.performed -= AttackPerformed;
+	}
+	private void JumpPerformed(InputAction.CallbackContext _){
+		if (!CanControlPlayer()){
+			return;
+		}
+		player.Jump();
+		if (!IsServer){
+			JumpRpc();
+		}
+	}
+	private void StopJumpingPerformed(InputAction.CallbackContext _){
+		if (!CanControlPlayer()){
+			return;
+		}
+		player.StopJumping();
+		if (!IsServer){
+			StopJumpingRpc();
+		}
+	}
+	private void AttackPerformed(InputAction.CallbackContext _){
+		if (!CanControlPlayer()){
+			return;
+		}
+		player.Attack();
+		if (!IsServer){
+			AttackRpc();
+		}
 	}
 	
 	public void FixedUpdate(){

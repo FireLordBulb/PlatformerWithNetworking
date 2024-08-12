@@ -592,6 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1825f091cac6dd14981ee4cf989d56d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkObject: {fileID: 2541664844453473582}
   rigidBody: {fileID: 8434475248948236123}
   body: {fileID: 7480487452929741155}
   legCollider: {fileID: 5071942010145426704}
@@ -604,6 +605,7 @@ MonoBehaviour:
   knockbackImpulse: 5
   sideUpwardsKnockbackImpulse: 2
   pogoImpulse: 6
+  maxHealth: 5
 --- !u!114 &8889410910896296260
 MonoBehaviour:
   m_ObjectHideFlags: 0

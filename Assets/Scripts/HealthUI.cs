@@ -8,6 +8,9 @@ public class HealthUI : MonoBehaviour {
     public static HealthUI Instance;
 
     [SerializeField] private Image[] hearts;
+    [SerializeField] private Sprite fullHeart;
+    [SerializeField] private Sprite brokenHeart;
+    
     private void Awake(){
         if (Instance != null){
             Destroy(gameObject);
@@ -15,5 +18,10 @@ public class HealthUI : MonoBehaviour {
         }
         Instance = this;
         print("HealthUI instanced!");
+    }
+    public void SetHeartsLeft(int heartsLeft){
+        for (int i = 0; i < hearts.Length; i++){
+            hearts[i].sprite = i < heartsLeft ? fullHeart : brokenHeart;
+        }
     }
 }

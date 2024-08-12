@@ -209,6 +209,8 @@ MonoBehaviour:
   - {fileID: 384741408985526549}
   - {fileID: 4868261111144606820}
   - {fileID: 290697760561321151}
+  fullHeart: {fileID: 21300000, guid: 8a57a94d3b202f946a19feb2a4cdf340, type: 3}
+  brokenHeart: {fileID: 21300000, guid: db9c6592fe6312b4083c2376c0af6452, type: 3}
 --- !u!1 &8184872807958658293
 GameObject:
   m_ObjectHideFlags: 0
