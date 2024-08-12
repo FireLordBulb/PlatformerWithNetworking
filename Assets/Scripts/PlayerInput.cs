@@ -18,11 +18,13 @@ public class PlayerInput : NetworkBehaviour {
 		actions.Jump.performed += JumpPerformed;
 		actions.Jump.canceled += StopJumpingPerformed;
 		actions.Attack.performed += AttackPerformed;
+		actions.Spell.performed += SpellPerformed;
 	}
 	private void OnDisable(){
 		actions.Jump.performed -= JumpPerformed;
 		actions.Jump.canceled -= StopJumpingPerformed;
 		actions.Attack.performed -= AttackPerformed;
+		actions.Spell.performed -= SpellPerformed;
 	}
 	private void JumpPerformed(InputAction.CallbackContext _){
 		if (!CanControlPlayer()){
@@ -50,6 +52,12 @@ public class PlayerInput : NetworkBehaviour {
 		if (!IsServer){
 			AttackRpc();
 		}
+	}
+	private void SpellPerformed(InputAction.CallbackContext _){
+		if (!CanControlPlayer()){
+			return;
+		}
+		SpellRpc();
 	}
 	
 	public void FixedUpdate(){
@@ -99,6 +107,12 @@ public class PlayerInput : NetworkBehaviour {
      private void AttackRpc(RpcParams rpcParams = default){
 	     if (IsPlayerOwnedBySender(rpcParams)){
 		     player.Attack();
+	     }
+     }
+     [Rpc(SendTo.Server)]
+     private void SpellRpc(RpcParams rpcParams = default){
+	     if (IsPlayerOwnedBySender(rpcParams)){
+		     player.CastSpell();
 	     }
      }
      [Rpc(SendTo.Server)]

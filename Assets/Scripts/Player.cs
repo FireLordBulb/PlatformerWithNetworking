@@ -10,6 +10,7 @@ public class Player : NetworkBehaviour {
     [SerializeField] private SpriteRenderer body;
     [SerializeField] private Collider2D legCollider;
     [SerializeField] private Blade blade;
+    [SerializeField] private Fireball fireballPrefab;
     [SerializeField] private float invisTime;
     [SerializeField] private float runningSpeed;
     [SerializeField] private float jumpStartImpulse;
@@ -102,7 +103,9 @@ public class Player : NetworkBehaviour {
             StartSwingingRpc();
         }
     }
-    
+    public void CastSpell(){
+        
+    }
     private void OnTriggerEnter2D(Collider2D other){
         if (0 < invisTimeLeft || !other.gameObject.TryGetComponent(out BladeHitbox hitbox) || hitbox.Wielder == this){
             return;
