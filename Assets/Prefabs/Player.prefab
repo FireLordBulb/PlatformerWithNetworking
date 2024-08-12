@@ -540,7 +540,7 @@ MonoBehaviour:
   SyncPositionZ: 0
   SyncRotAngleX: 0
   SyncRotAngleY: 0
-  SyncRotAngleZ: 1
+  SyncRotAngleZ: 0
   SyncScaleX: 0
   SyncScaleY: 0
   SyncScaleZ: 0
@@ -597,7 +597,7 @@ MonoBehaviour:
   legCollider: {fileID: 5071942010145426704}
   blade: {fileID: 3401466913576206029}
   runningSpeed: 15
-  jumpStartForce: 160
+  jumpStartImpulse: 3.2
   jumpHoldForce: 34
   jumpHoldTime: 0.25
 --- !u!114 &8889410910896296260

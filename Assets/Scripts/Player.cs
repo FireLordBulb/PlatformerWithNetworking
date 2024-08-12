@@ -10,21 +10,26 @@ public class Player : NetworkBehaviour {
     [SerializeField] private Collider2D legCollider;
     [SerializeField] private Blade blade;
     [SerializeField] private float runningSpeed;
-    [SerializeField] private float jumpStartForce;
+    [SerializeField] private float jumpStartImpulse;
     [SerializeField] private float jumpHoldForce;
     [SerializeField] private float jumpHoldTime;
+    
     public const int Up = +1, Down = -1, Right = +1, Left = -1;
     private const float MaxGroundDistance = 0.02f;
-    private Vector2 currentDirection;
+    
+    private readonly NetworkVariable<Vector2> networkCurrentDirection = new();
+    private Vector2 localCurrentDirection;
     private float jumpHoldTimeLeft;
     private bool isOnGround;
     private bool canDoubleJump;
     public void Awake(){
         blade.SetWielder(this);
     }
+    
     public void Move(Vector2 direction){
-        int xMovement = (int)direction.x;
-        switch(xMovement){
+        int xDirection = (int)direction.x;
+        int yDirection = (int)direction.y;
+        switch(xDirection){
             case Right:
                 SetBodySprite(false);
                 break;
@@ -34,12 +39,26 @@ public class Player : NetworkBehaviour {
             case 0:
                 break;
             default:
-                // Invalid value for xMovement (only Right, Left & 0 are valid), client which sent "direction" must have been hacked in an attempt to cheat.
+                // Invalid value for xDirection (only Right, Left & 0 are valid), client which sent "direction" must have been hacked in an attempt to cheat.
                 // Return early to ignore input to prevent the hacked values from affecting the server.
                 return;
         }
-        currentDirection = direction;
-        rigidBody.AddForce(new Vector2(xMovement*runningSpeed, 0), ForceMode2D.Force);
+        switch(yDirection){
+            case Up:
+            case Down:
+            case 0:
+                break;
+            default:
+                // Invalid value for yDirection (only Up, Down & 0 are valid), client which sent "direction" must have been hacked in an attempt to cheat.
+                // Return early to ignore input to prevent the hacked values from affecting the server.
+                return;
+        }
+        if (IsServer){
+            networkCurrentDirection.Value = direction;
+        } else if (IsOwner){
+            localCurrentDirection = direction;
+        }
+        rigidBody.AddForce(new Vector2(xDirection*runningSpeed, 0), ForceMode2D.Force);
     }
     private void SetBodySprite(bool flipX){
         if (body.flipX == flipX || blade.IsSwinging){
@@ -50,7 +69,7 @@ public class Player : NetworkBehaviour {
             SetBodySpriteRpc(flipX);
         }
     }
-    // TODO: Add double jump.
+    // TODO: Add fix double jump.
     public void Jump(){
         if (!isOnGround){
             if (!canDoubleJump){
@@ -61,14 +80,14 @@ public class Player : NetworkBehaviour {
             isOnGround = false;
             canDoubleJump = true;
         }
-        rigidBody.AddForce(new Vector2(0, jumpStartForce), ForceMode2D.Force);
+        rigidBody.AddForce(new Vector2(0, jumpStartImpulse), ForceMode2D.Impulse);
         jumpHoldTimeLeft = jumpHoldTime;
     }
     public void StopJumping(){
         jumpHoldTimeLeft = 0;
     }
     public void Attack(){
-        blade.StartSwinging(currentDirection.y, body.flipX);
+        blade.StartSwinging((!IsServer && IsOwner ? localCurrentDirection : networkCurrentDirection.Value).y, body.flipX);
         if (IsServer){
             StartSwingingRpc();
         }
@@ -91,7 +110,7 @@ public class Player : NetworkBehaviour {
         }
         JumpHoldUpdate();
     }
-
+    
     private void CheckForGroundBelow(params float[] xValues){
         // ReSharper disable once LoopCanBeConvertedToQuery
         foreach (float x in xValues){
@@ -116,7 +135,7 @@ public class Player : NetworkBehaviour {
     [Rpc(SendTo.Everyone)]
     private void StartSwingingRpc(RpcParams rpcParams = default){
         if (rpcParams.Receive.SenderClientId == NetworkManager.ServerClientId){
-            blade.StartSwinging(currentDirection.y, body.flipX);
+            blade.StartSwinging(networkCurrentDirection.Value.y, body.flipX);
         }
     }
     // Should only be sent by server, the if-statement checks that this is the case on all unmodified clients,
