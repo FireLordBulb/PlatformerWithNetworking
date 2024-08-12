@@ -69,7 +69,6 @@ public class Player : NetworkBehaviour {
             SetBodySpriteRpc(flipX);
         }
     }
-    // TODO: Add fix double jump.
     public void Jump(){
         if (!isOnGround){
             if (!canDoubleJump){
@@ -80,6 +79,7 @@ public class Player : NetworkBehaviour {
             isOnGround = false;
             canDoubleJump = true;
         }
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
         rigidBody.AddForce(new Vector2(0, jumpStartImpulse), ForceMode2D.Impulse);
         jumpHoldTimeLeft = jumpHoldTime;
     }
@@ -104,7 +104,7 @@ public class Player : NetworkBehaviour {
     }
     
     public void FixedUpdate(){
-        if (jumpHoldTimeLeft == 0){
+        if (isOnGround || jumpHoldTimeLeft == 0){
             Bounds legBounds = legCollider.bounds;
             CheckForGroundBelow(legBounds.min.x, legBounds.max.x, (legBounds.min.x+legBounds.max.x)/2);
         }
@@ -118,6 +118,10 @@ public class Player : NetworkBehaviour {
                 isOnGround = true;
                 return;
             }
+            if (isOnGround){
+                canDoubleJump = true;
+            }
+            isOnGround = false;
         }
     }
     private void JumpHoldUpdate(){
