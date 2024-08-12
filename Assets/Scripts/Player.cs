@@ -1,8 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using Unity.Mathematics;
 using Unity.Netcode;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
 
 public class Player : NetworkBehaviour {
     [SerializeField] private NetworkObject networkObject;
@@ -104,19 +108,33 @@ public class Player : NetworkBehaviour {
         }
     }
     public void CastSpell(){
-        
-    }
-    private void OnTriggerEnter2D(Collider2D other){
-        if (0 < invisTimeLeft || !other.gameObject.TryGetComponent(out BladeHitbox hitbox) || hitbox.Wielder == this){
+        if (!IsServer || blade.IsSwinging){
             return;
         }
-        invisTimeLeft = invisTime;
-        Vector2 knockback = hitbox.Blade.SwingDirection*knockbackImpulse;
+        Fireball newFireball = Instantiate(fireballPrefab, transform.position, Quaternion.identity);
+        newFireball.GetAttackHitbox().Player = this;
+        newFireball.GetComponent<NetworkObject>().Spawn();
+        newFireball.StartMovingRpc(body.flipX);
+    }
+    private void OnTriggerEnter2D(Collider2D other){
+        if (0 < invisTimeLeft || !other.gameObject.TryGetComponent(out AttackHitbox hitbox) || hitbox.Player == this){
+            return;
+        }
+        Vector2 knockback = new();
+        if (hitbox is BladeHitbox bladeHitbox){
+            knockback = bladeHitbox.Blade.SwingDirection*knockbackImpulse;
+            hitbox.Player.Pogo();
+        } else if (hitbox.TryGetComponent(out Fireball fireball)){
+            if (fireball.GetAttackHitbox().Player == this){
+                return;
+            }
+            knockback = new Vector2(fireball.IsMovingLeft ? -knockbackImpulse : knockbackImpulse, 0);
+        }
         if (knockback.y == 0){
             knockback.y += sideUpwardsKnockbackImpulse;
         }
         AddYCancelingImpulse(knockback);
-        hitbox.Wielder.Pogo();
+        invisTimeLeft = invisTime;
         if (!IsServer){
             return;
         }

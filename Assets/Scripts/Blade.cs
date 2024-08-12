@@ -23,7 +23,7 @@ public class Blade : MonoBehaviour {
 
     public void SetWielder(Player wielder){
         foreach (BladeHitbox hitbox in hitboxes){
-            hitbox.Wielder = wielder;
+            hitbox.Player = wielder;
             hitbox.Blade = this;
         }
     }

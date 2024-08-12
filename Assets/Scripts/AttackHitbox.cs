@@ -3,6 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BladeHitbox : AttackHitbox {
-    public Blade Blade {get; set;}
+public class AttackHitbox : MonoBehaviour {
+    public Player Player {get; set;}
 }
