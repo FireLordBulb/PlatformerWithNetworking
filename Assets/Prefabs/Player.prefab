@@ -596,10 +596,14 @@ MonoBehaviour:
   body: {fileID: 7480487452929741155}
   legCollider: {fileID: 5071942010145426704}
   blade: {fileID: 3401466913576206029}
+  invisTime: 0.3
   runningSpeed: 15
   jumpStartImpulse: 3.2
   jumpHoldForce: 34
   jumpHoldTime: 0.25
+  knockbackImpulse: 5
+  sideUpwardsKnockbackImpulse: 2
+  pogoImpulse: 6
 --- !u!114 &8889410910896296260
 MonoBehaviour:
   m_ObjectHideFlags: 0

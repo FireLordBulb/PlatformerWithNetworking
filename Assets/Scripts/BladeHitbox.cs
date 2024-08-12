@@ -5,4 +5,5 @@ using UnityEngine;
 
 public class BladeHitbox : MonoBehaviour {
     public Player Wielder {get; set;}
+    public Blade Blade {get; set;}
 }

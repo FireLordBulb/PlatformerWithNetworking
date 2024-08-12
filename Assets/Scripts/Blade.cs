@@ -13,8 +13,9 @@ public class Blade : MonoBehaviour {
     private float swingSpeed;
     private float endAngle;
     
-    
+    public Vector2 SwingDirection {get; private set;}
     public bool IsSwinging {get; private set;}
+    public bool HasPogoed {get; set;}
 
     private void Awake(){
         swingSpeed = halfSwingAngle*2/swingTime;
@@ -23,6 +24,7 @@ public class Blade : MonoBehaviour {
     public void SetWielder(Player wielder){
         foreach (BladeHitbox hitbox in hitboxes){
             hitbox.Wielder = wielder;
+            hitbox.Blade = this;
         }
     }
     
@@ -30,13 +32,16 @@ public class Blade : MonoBehaviour {
         if (IsSwinging){
             return;
         }
-        SetActive(true);
+        SetActive(true); 
+        HasPogoed = false;
         // Can't swing downwards when on solid ground.
         if (isOnSolidGround){
             yDirection = Mathf.Max(yDirection, 0);
         }
         // Sideways swings are always to the "Right" z-angle-wise, since the y-angle flip handles left/right.
-        float directionAngle = Mathf.Rad2Deg*Mathf.Atan2(yDirection, yDirection == 0 ? Player.Right : 0);
+        float xDirection = yDirection == 0 ? Player.Right : 0;
+        float directionAngle = Mathf.Rad2Deg*Mathf.Atan2(yDirection, xDirection);
+        SwingDirection = new Vector2(isFacingLeft ? -xDirection : xDirection, yDirection);
         transform.eulerAngles = new Vector3(
             transform.eulerAngles.x, 
             isFacingLeft ? FacingLeftAngle : FacingRightAngle,
@@ -44,6 +49,7 @@ public class Blade : MonoBehaviour {
         );
         endAngle = directionAngle - halfSwingAngle;
     }
+    
     private void Update(){
         if (!IsSwinging){
             return;

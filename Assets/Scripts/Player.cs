@@ -9,16 +9,21 @@ public class Player : NetworkBehaviour {
     [SerializeField] private SpriteRenderer body;
     [SerializeField] private Collider2D legCollider;
     [SerializeField] private Blade blade;
+    [SerializeField] private float invisTime;
     [SerializeField] private float runningSpeed;
     [SerializeField] private float jumpStartImpulse;
     [SerializeField] private float jumpHoldForce;
     [SerializeField] private float jumpHoldTime;
+    [SerializeField] private float knockbackImpulse;
+    [SerializeField] private float sideUpwardsKnockbackImpulse;
+    [SerializeField] private float pogoImpulse;
     
     public const int Up = +1, Down = -1, Right = +1, Left = -1;
     private const float MaxGroundDistance = 0.02f;
     
     private readonly NetworkVariable<Vector2> networkCurrentDirection = new();
     private Vector2 localCurrentDirection;
+    private float invisTimeLeft;
     private float jumpHoldTimeLeft;
     private bool isOnGround;
     private bool isOnSolidGround;
@@ -81,8 +86,7 @@ public class Player : NetworkBehaviour {
             isOnSolidGround = false;
             canDoubleJump = true;
         }
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
-        rigidBody.AddForce(new Vector2(0, jumpStartImpulse), ForceMode2D.Impulse);
+        AddYCancelingImpulse(new Vector2(0, jumpStartImpulse));
         jumpHoldTimeLeft = jumpHoldTime;
     }
     public void StopJumping(){
@@ -96,16 +100,44 @@ public class Player : NetworkBehaviour {
     }
     
     private void OnTriggerEnter2D(Collider2D other){
-        if (!other.gameObject.TryGetComponent(out BladeHitbox hitbox) || hitbox.Wielder == this){
+        if (0 < invisTimeLeft || !other.gameObject.TryGetComponent(out BladeHitbox hitbox) || hitbox.Wielder == this){
             return;
         }
         print($"Client {OwnerClientId}'s player got hit!");
+        invisTimeLeft = invisTime;
+        Vector2 knockback = hitbox.Blade.SwingDirection*knockbackImpulse;
+        if (knockback.y == 0){
+            knockback.y += sideUpwardsKnockbackImpulse;
+        }
+        AddYCancelingImpulse(knockback);
+
+        hitbox.Wielder.Pogo();
         if (!IsServer){
             return;
         }
+        // Reduce HP and cause game over.
+    }
+    private void Pogo(){
+        if (blade.HasPogoed || blade.SwingDirection != new Vector2(0, Down)){
+            return;
+        }
+        blade.HasPogoed = true;
+        jumpHoldTimeLeft = 0;
+        canDoubleJump = true;
+        AddYCancelingImpulse(new Vector2(0, pogoImpulse));
+    }
+    private void AddYCancelingImpulse(Vector2 impulse){
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
+        rigidBody.AddForce(impulse, ForceMode2D.Impulse);
     }
     
     public void FixedUpdate(){
+        if (0 < invisTimeLeft){
+            invisTimeLeft -= Time.fixedDeltaTime;
+            if (invisTimeLeft < 0){
+                invisTimeLeft = 0;
+            }
+        }
         if (isOnGround || jumpHoldTimeLeft == 0){
             Bounds legBounds = legCollider.bounds;
             CheckForGroundBelow(legBounds.min.x, legBounds.max.x, (legBounds.min.x+legBounds.max.x)/2);
