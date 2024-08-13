@@ -13,6 +13,7 @@ public class Player : NetworkBehaviour {
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer body;
     [SerializeField] private Collider2D legCollider;
+    [SerializeField] private Transform fireballSpawn;
     [SerializeField] private Blade blade;
     [SerializeField] private Fireball fireballPrefab;
     [SerializeField] private float invisTime;
@@ -111,7 +112,7 @@ public class Player : NetworkBehaviour {
         if (!IsServer || blade.IsSwinging){
             return;
         }
-        Fireball newFireball = Instantiate(fireballPrefab, transform.position, Quaternion.identity);
+        Fireball newFireball = Instantiate(fireballPrefab, fireballSpawn.position, Quaternion.identity);
         newFireball.GetAttackHitbox().Player = this;
         newFireball.GetComponent<NetworkObject>().Spawn();
         newFireball.StartMovingRpc(body.flipX);
