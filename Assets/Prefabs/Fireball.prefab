@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseUnreliableDeltas: 0
+  UseUnreliableDeltas: 1
   SyncPositionX: 1
   SyncPositionY: 1
   SyncPositionZ: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   UseQuaternionCompression: 0
   UseHalfFloatPrecision: 0
   InLocalSpace: 0
-  Interpolate: 1
+  Interpolate: 0
   SlerpPosition: 0
 --- !u!212 &4756253049757943024
 SpriteRenderer:

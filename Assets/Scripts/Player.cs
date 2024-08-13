@@ -37,6 +37,8 @@ public class Player : NetworkBehaviour {
     private bool isOnGround;
     private bool isOnSolidGround;
     private bool canDoubleJump;
+
+    private Vector2 CurrentDirection => !IsServer && IsOwner ? localCurrentDirection : networkCurrentDirection.Value;
     public void Awake(){
         blade.SetWielder(this);
         healthPoints = maxHealth;
@@ -74,7 +76,6 @@ public class Player : NetworkBehaviour {
         } else if (IsOwner){
             localCurrentDirection = direction;
         }
-        rigidBody.AddForce(new Vector2(xDirection*runningSpeed, 0), ForceMode2D.Force);
     }
     private void SetBodySprite(bool flipX){
         if (body.flipX == flipX || blade.IsSwinging){
@@ -103,7 +104,7 @@ public class Player : NetworkBehaviour {
         jumpHoldTimeLeft = 0;
     }
     public void Attack(){
-        blade.StartSwinging((!IsServer && IsOwner ? localCurrentDirection : networkCurrentDirection.Value).y, body.flipX, isOnSolidGround);
+        blade.StartSwinging(CurrentDirection.y, body.flipX, isOnSolidGround);
         if (IsServer){
             StartSwingingRpc();
         }
@@ -162,6 +163,7 @@ public class Player : NetworkBehaviour {
     }
     
     public void FixedUpdate(){
+        rigidBody.AddForce(new Vector2(CurrentDirection.x*runningSpeed, 0), ForceMode2D.Force);
         if (0 < invisTimeLeft){
             invisTimeLeft -= Time.fixedDeltaTime;
             if (invisTimeLeft < 0){
@@ -183,7 +185,8 @@ public class Player : NetworkBehaviour {
                 continue;
             }
             isOnGround = true;
-            isOnSolidGround = hit.collider.attachedRigidbody == null;
+            // Dynamic Rigidbodies (like other players) are ground, but not solid ground.
+            isOnSolidGround = hit.collider.attachedRigidbody == null || hit.collider.attachedRigidbody.bodyType != RigidbodyType2D.Dynamic;
             return;
         }
         if (isOnGround){
@@ -207,7 +210,7 @@ public class Player : NetworkBehaviour {
     [Rpc(SendTo.Everyone)]
     private void StartSwingingRpc(RpcParams rpcParams = default){
         if (rpcParams.Receive.SenderClientId == NetworkManager.ServerClientId){
-            blade.StartSwinging(networkCurrentDirection.Value.y, body.flipX, isOnSolidGround);
+            blade.StartSwinging(CurrentDirection.y, body.flipX, isOnSolidGround);
         }
     }
     [Rpc(SendTo.Owner)]
