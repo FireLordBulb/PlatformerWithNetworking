@@ -21,7 +21,8 @@ public class Fireball : NetworkBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other){
         // If the other is the player then player is responsible for despawning the fireball.
-        if (!other.isTrigger && other.attachedRigidbody != null && other.attachedRigidbody.TryGetComponent(out Player player)){
+        if (!other.isTrigger && AttackHitbox.TryGetPlayer(other.attachedRigidbody, out Player player)){
+            player.GetHit(hitbox.Collider);
             return;
         }
         // Only the server handles despawning networkObjects.

@@ -118,7 +118,7 @@ public class Player : NetworkBehaviour {
         newFireball.GetComponent<NetworkObject>().Spawn();
         newFireball.StartMovingRpc(body.flipX);
     }
-    private void OnTriggerEnter2D(Collider2D other){
+    public void GetHit(Collider2D other){
         if (0 < invisTimeLeft || !other.gameObject.TryGetComponent(out AttackHitbox hitbox) || hitbox.Player == this){
             return;
         }
