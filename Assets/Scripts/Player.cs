@@ -26,7 +26,6 @@ public class Player : NetworkBehaviour {
     [SerializeField] private float pogoImpulse;
     [SerializeField] private int maxHealth;
     
-    public const int Up = +1, Down = -1, Right = +1, Left = -1;
     private const float MaxGroundDistance = 0.02f;
     
     private readonly NetworkVariable<Vector2> networkCurrentDirection = new();
@@ -48,10 +47,10 @@ public class Player : NetworkBehaviour {
         int xDirection = (int)direction.x;
         int yDirection = (int)direction.y;
         switch(xDirection){
-            case Right:
+            case Util.Right:
                 SetBodySprite(false);
                 break;
-            case Left:
+            case Util.Left:
                 SetBodySprite(true);
                 break;
             case 0:
@@ -62,8 +61,8 @@ public class Player : NetworkBehaviour {
                 return;
         }
         switch(yDirection){
-            case Up:
-            case Down:
+            case Util.Up:
+            case Util.Down:
             case 0:
                 break;
             default:
@@ -114,24 +113,19 @@ public class Player : NetworkBehaviour {
             return;
         }
         Fireball newFireball = Instantiate(fireballPrefab, fireballSpawn.position, Quaternion.identity);
-        newFireball.GetAttackHitbox().Player = this;
+        newFireball.SetCaster(this);
         newFireball.GetComponent<NetworkObject>().Spawn();
         newFireball.StartMovingRpc(body.flipX);
     }
-    public void GetHit(Collider2D other){
-        if (0 < invisTimeLeft || !other.gameObject.TryGetComponent(out AttackHitbox hitbox) || hitbox.Player == this){
+    
+    public void GetHit(AttackHitbox hitbox, Vector2 knockback, bool canCausePogo = false){
+        if (0 < invisTimeLeft || hitbox.Player == this){
             return;
         }
-        Vector2 knockback = new();
-        if (hitbox is BladeHitbox bladeHitbox){
-            knockback = bladeHitbox.Blade.SwingDirection*knockbackImpulse;
+        if (canCausePogo){
             hitbox.Player.Pogo();
-        } else if (hitbox.TryGetComponent(out Fireball fireball)){
-            if (fireball.GetAttackHitbox().Player == this){
-                return;
-            }
-            knockback = new Vector2(fireball.IsMovingLeft ? -knockbackImpulse : knockbackImpulse, 0);
         }
+        knockback *= knockbackImpulse;
         if (knockback.y == 0){
             knockback.y += sideUpwardsKnockbackImpulse;
         }
@@ -149,7 +143,7 @@ public class Player : NetworkBehaviour {
         networkObject.Despawn();
     }
     private void Pogo(){
-        if (blade.HasPogoed || blade.SwingDirection != new Vector2(0, Down)){
+        if (blade.HasPogoed || blade.SwingDirection != -Vector2.up){
             return;
         }
         blade.HasPogoed = true;

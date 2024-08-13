@@ -15,15 +15,12 @@ public class Fireball : NetworkBehaviour {
     
     public bool IsMovingLeft {get; private set;}
     
-    public AttackHitbox GetAttackHitbox(){
-        return hitbox;
-    }
-
     private void OnTriggerEnter2D(Collider2D other){
-        // If the other is the player then player is responsible for despawning the fireball.
         if (!other.isTrigger && AttackHitbox.TryGetPlayer(other.attachedRigidbody, out Player player)){
-            player.GetHit(hitbox.Collider);
-            return;
+            if (player == hitbox.Player){
+                return;
+            }
+            player.GetHit(hitbox, Util.ToDirection(IsMovingLeft));
         }
         // Only the server handles despawning networkObjects.
         if (!IsServer){
@@ -33,10 +30,6 @@ public class Fireball : NetworkBehaviour {
         if (other.TryGetComponent<Fireball>(out _)){
             return;
         }
-        StartDespawning();
-    }
-
-    public void StartDespawning(){
         isDespawning = true;
     }
     
@@ -47,8 +40,13 @@ public class Fireball : NetworkBehaviour {
         }
         despawnTime -= Time.fixedDeltaTime;
         if (despawnTime < 0){
+            // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
             GetComponent<NetworkObject>().Despawn();
         }
+    }
+    
+    public void SetCaster(Player player){
+        hitbox.Player = player;
     }
     
     [Rpc(SendTo.Everyone)]
@@ -58,6 +56,6 @@ public class Fireball : NetworkBehaviour {
         }
         IsMovingLeft = isMovingLeft;
         sprite.flipX = isMovingLeft;
-        positionDelta = new Vector3((isMovingLeft ? -1 : +1)*speed*Time.fixedDeltaTime, 0);
+        positionDelta = speed*Time.fixedDeltaTime * Util.ToDirection(isMovingLeft);
     }
 }

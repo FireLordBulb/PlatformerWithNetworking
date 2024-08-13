@@ -12,7 +12,7 @@ public class BladeHitbox : AttackHitbox {
             return;
         }
         if (TryGetPlayer(other.attachedRigidbody, out Player player)){
-            player.GetHit(Collider);
+            player.GetHit(this, Blade.SwingDirection, true);
         }
     }
 }
