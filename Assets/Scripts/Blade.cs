@@ -39,9 +39,9 @@ public class Blade : MonoBehaviour {
             yDirection = Mathf.Max(yDirection, 0);
         }
         // Sideways swings are always to the "Right" z-angle-wise, since the y-angle flip handles left/right.
-        float xDirection = yDirection == 0 ? Player.Right : 0;
+        float xDirection = yDirection == 0 ? Util.Right : 0;
         float directionAngle = Mathf.Rad2Deg*Mathf.Atan2(yDirection, xDirection);
-        SwingDirection = new Vector2(isFacingLeft ? -xDirection : xDirection, yDirection);
+        SwingDirection = new Vector2(xDirection*Util.ToDirectionSign(isFacingLeft), yDirection);
         transform.eulerAngles = new Vector3(
             transform.eulerAngles.x, 
             isFacingLeft ? FacingLeftAngle : FacingRightAngle,
