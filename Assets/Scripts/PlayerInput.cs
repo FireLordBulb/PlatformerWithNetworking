@@ -57,7 +57,10 @@ public class PlayerInput : NetworkBehaviour {
 		if (!CanControlPlayer()){
 			return;
 		}
-		SpellRpc();
+		player.CastSpell();
+		if (!IsServer){
+			SpellRpc();
+		}
 	}
 	
 	public void FixedUpdate(){

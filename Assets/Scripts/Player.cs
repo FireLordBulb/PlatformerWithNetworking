@@ -1,21 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
-using Unity.Mathematics;
 using Unity.Netcode;
 using UnityEngine;
-using Quaternion = UnityEngine.Quaternion;
-using Vector2 = UnityEngine.Vector2;
 
 public class Player : NetworkBehaviour {
+    // Components on the prefab.
     [SerializeField] private NetworkObject networkObject;
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer body;
     [SerializeField] private Collider2D legCollider;
     [SerializeField] private Transform fireballSpawn;
+    [SerializeField] private GameObject fireballCooldownBackground;
+    [SerializeField] private Transform fireballCooldownBar;
     [SerializeField] private Blade blade;
+    // Config values.
     [SerializeField] private Fireball fireballPrefab;
+    [SerializeField] private float fireballCooldownTime;
     [SerializeField] private float invisTime;
     [SerializeField] private float runningSpeed;
     [SerializeField] private float jumpStartImpulse;
@@ -26,10 +27,13 @@ public class Player : NetworkBehaviour {
     [SerializeField] private float pogoImpulse;
     [SerializeField] private int maxHealth;
     
+    // Constants
     private const float MaxGroundDistance = 0.02f;
     
+    // Mutable state
     private readonly NetworkVariable<Vector2> networkCurrentDirection = new();
     private Vector2 localCurrentDirection;
+    private float fireballCooldownTimeLeft;
     private float invisTimeLeft;
     private float jumpHoldTimeLeft;
     private int healthPoints;
@@ -109,15 +113,26 @@ public class Player : NetworkBehaviour {
         }
     }
     public void CastSpell(){
-        if (!IsServer || blade.IsSwinging){
+        if (0 < fireballCooldownTimeLeft || blade.IsSwinging){
             return;
         }
+        if (IsOwner){
+            StartFireballCooldown();
+        }
+        if (!IsServer){
+            return;
+        }
+        StartFireballCooldownRpc();
         Fireball newFireball = Instantiate(fireballPrefab, fireballSpawn.position, Quaternion.identity);
         newFireball.SetCaster(this);
         newFireball.GetComponent<NetworkObject>().Spawn();
         newFireball.StartMovingRpc(body.flipX);
     }
-    
+    public void StartFireballCooldown(){
+        fireballCooldownBackground.SetActive(true);
+        fireballCooldownBar.localScale = Vector3.one;
+        fireballCooldownTimeLeft = fireballCooldownTime;
+    }
     public void GetHit(AttackHitbox hitbox, Vector2 knockback, bool canCausePogo = false){
         if (0 < invisTimeLeft || hitbox.Player == this){
             return;
@@ -164,6 +179,15 @@ public class Player : NetworkBehaviour {
                 invisTimeLeft = 0;
             }
         }
+        if (0 < fireballCooldownTimeLeft){
+            fireballCooldownTimeLeft -= Time.fixedDeltaTime;
+            if (fireballCooldownTimeLeft < 0){
+                fireballCooldownTimeLeft = 0;
+                fireballCooldownBackground.SetActive(false);
+            } else {
+                fireballCooldownBar.localScale = new Vector3(fireballCooldownTimeLeft/fireballCooldownTime, 1, 1);
+            }
+        }
         if (isOnGround || jumpHoldTimeLeft == 0){
             Bounds legBounds = legCollider.bounds;
             CheckForGroundBelow(legBounds.min.x, legBounds.max.x, (legBounds.min.x+legBounds.max.x)/2);
@@ -205,6 +229,12 @@ public class Player : NetworkBehaviour {
     private void StartSwingingRpc(RpcParams rpcParams = default){
         if (Util.SenderIsServer(rpcParams)){
             blade.StartSwinging(CurrentDirection.y, body.flipX, isOnSolidGround);
+        }
+    }
+    [Rpc(SendTo.NotOwner)]
+    private void StartFireballCooldownRpc(RpcParams rpcParams = default){
+        if (Util.SenderIsServer(rpcParams)){
+            StartFireballCooldown();
         }
     }
     [Rpc(SendTo.Owner)]
