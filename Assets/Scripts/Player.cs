@@ -209,13 +209,13 @@ public class Player : NetworkBehaviour {
     
     [Rpc(SendTo.Everyone)]
     private void StartSwingingRpc(RpcParams rpcParams = default){
-        if (rpcParams.Receive.SenderClientId == NetworkManager.ServerClientId){
+        if (Util.SenderIsServer(rpcParams)){
             blade.StartSwinging(CurrentDirection.y, body.flipX, isOnSolidGround);
         }
     }
     [Rpc(SendTo.Owner)]
     private void UpdateHealthPointsRpc(int serverHealthPoints, RpcParams rpcParams = default){
-        if (rpcParams.Receive.SenderClientId != NetworkManager.ServerClientId){
+        if (!Util.SenderIsServer(rpcParams)){
             return;
         }
         healthPoints = serverHealthPoints;
@@ -226,7 +226,7 @@ public class Player : NetworkBehaviour {
     // so a hacked client can't use this to alter the state of other clients.
     [Rpc(SendTo.NotServer)]
     private void SetBodySpriteRpc(bool flipX, RpcParams rpcParams = default){
-        if (rpcParams.Receive.SenderClientId == NetworkManager.ServerClientId){
+        if (Util.SenderIsServer(rpcParams)){
             body.flipX = flipX;
         }
     }

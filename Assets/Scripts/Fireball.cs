@@ -21,7 +21,7 @@ public class Fireball : NetworkBehaviour {
     
     [Rpc(SendTo.Everyone)]
     public void StartMovingRpc(bool isMovingLeft, RpcParams rpcParams = default){
-        if (rpcParams.Receive.SenderClientId != NetworkManager.ServerClientId){
+        if (!Util.SenderIsServer(rpcParams)){
             return;
         }
         IsMovingLeft = isMovingLeft;
