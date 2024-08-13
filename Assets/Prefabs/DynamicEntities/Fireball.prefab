@@ -73,6 +73,7 @@ MonoBehaviour:
   sprite: {fileID: 4756253049757943024}
   hitbox: {fileID: 4639829839384158727}
   speed: 10
+  despawnTime: 0.02
 --- !u!114 &336994501255752711
 MonoBehaviour:
   m_ObjectHideFlags: 0

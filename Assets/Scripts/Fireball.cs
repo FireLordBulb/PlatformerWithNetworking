@@ -8,15 +8,46 @@ public class Fireball : NetworkBehaviour {
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private AttackHitbox hitbox;
     [SerializeField] private float speed;
+    [SerializeField] private float despawnTime;
 
     private Vector3 positionDelta;
+    private bool isDespawning;
+    
     public bool IsMovingLeft {get; private set;}
     
     public AttackHitbox GetAttackHitbox(){
         return hitbox;
     }
+
+    private void OnTriggerEnter2D(Collider2D other){
+        // If the other is the player then player is responsible for despawning the fireball.
+        if (!other.isTrigger && other.attachedRigidbody != null && other.attachedRigidbody.TryGetComponent(out Player player)){
+            return;
+        }
+        // Only the server handles despawning networkObjects.
+        if (!IsServer){
+            return;
+        }
+        // Fireballs pass through each other.
+        if (other.TryGetComponent<Fireball>(out _)){
+            return;
+        }
+        StartDespawning();
+    }
+
+    public void StartDespawning(){
+        isDespawning = true;
+    }
+    
     private void FixedUpdate(){
         transform.position += positionDelta;
+        if (!isDespawning){
+            return;
+        }
+        despawnTime -= Time.fixedDeltaTime;
+        if (despawnTime < 0){
+            GetComponent<NetworkObject>().Despawn();
+        }
     }
     
     [Rpc(SendTo.Everyone)]
