@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class GameManagerNetworkBehaviour : NetworkBehaviour {
 
+	public bool canDie;
+	
 	private GameManager gameManager;
 	
 	private void Awake(){
@@ -14,8 +16,10 @@ public class GameManagerNetworkBehaviour : NetworkBehaviour {
 	}
 
 	// It's immortal. You kill it, and its parent spawns another.
-	private void OnDisable(){
-		gameManager.SpawnNetworkBehavior();
+	private new void OnDestroy(){
+		if (!canDie){
+			gameManager.SpawnNetworkBehavior();
+		}
 	}
 	
 	[Rpc(SendTo.Everyone)]
@@ -26,14 +30,14 @@ public class GameManagerNetworkBehaviour : NetworkBehaviour {
 		gameManager.StartGame();
 	}
 
-	public void SendRoomIsFullRpc(ulong clientId){
-		RoomIsFullRpc(RpcTarget.Single(clientId, RpcTargetUse.Temp));
+	public void SendCantJoinRpc(bool gameHasStarted, ulong clientId){
+		CantJoinRpc(gameHasStarted, RpcTarget.Single(clientId, RpcTargetUse.Temp));
 	}
 	[Rpc(SendTo.SpecifiedInParams)]
-	public void RoomIsFullRpc(RpcParams rpcParams){
+	public void CantJoinRpc(bool gameHasStarted, RpcParams rpcParams){
 		if (!Util.SenderIsServer(rpcParams)){
 			return;
 		}
-		gameManager.RoomIsFull();
+		gameManager.CantJoin(gameHasStarted);
 	}
 }

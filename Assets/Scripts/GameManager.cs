@@ -1,12 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -21,8 +19,10 @@ public class GameManager : MonoBehaviour {
     private GameManagerNetworkBehaviour networkBehaviour;
     private UnityTransport transport;
     private MainMenuUI mainMenu;
-    private int nextPlayerIndex;
+    private readonly List<int> unusedSpawnIndexes = new();
+    private readonly Dictionary<ulong, int> usedSpawnIndexes = new();
     private bool isConnecting;
+    private bool gameHasStarted;
 
     private bool IsConnected => NetworkManager.Singleton.IsServer || NetworkManager.Singleton.IsClient || isConnecting;
     
@@ -34,7 +34,14 @@ public class GameManager : MonoBehaviour {
         Instance = this;
         
         SpawnNetworkBehavior();
+        for (int i = 0; i < playerSpawns.Length; i++){
+            unusedSpawnIndexes.Add(i);
+        }
     }
+    private void OnDestroy(){
+        networkBehaviour.canDie = true;
+    }
+
     // This has to be a separate class because all NetworkObjects even ones that were always in the
     // scene, get destroyed when the client disconnects or fails to connect.
     public void SpawnNetworkBehavior(){
@@ -60,11 +67,20 @@ public class GameManager : MonoBehaviour {
         print($"Started a Host: {transport.ConnectionData.Address}");
         SpawnPlayer(NetworkManager.Singleton, NetworkManager.Singleton.LocalClientId);
         NetworkManager.Singleton.OnConnectionEvent += (manager, eventData) => {
-            if (eventData.EventType != ConnectionEvent.ClientConnected){
-                return;
+            switch(eventData.EventType){
+                case ConnectionEvent.ClientConnected:
+                    SpawnPlayer(manager, eventData.ClientId);
+                    mainMenu.SetCurrentPlayersText(NetworkManager.Singleton.ConnectedClients.Count);
+                    break;
+                case ConnectionEvent.ClientDisconnected:
+                    unusedSpawnIndexes.Add(usedSpawnIndexes[eventData.ClientId]);
+                    usedSpawnIndexes.Remove(eventData.ClientId);
+                    break;
+                case ConnectionEvent.PeerConnected:
+                case ConnectionEvent.PeerDisconnected:
+                default:
+                    break;
             }
-            SpawnPlayer(manager, eventData.ClientId);
-            mainMenu.SetCurrentPlayersText(NetworkManager.Singleton.ConnectedClients.Count);
         };
         return transport.ConnectionData.Address;
     }
@@ -85,17 +101,24 @@ public class GameManager : MonoBehaviour {
         if (!manager.IsServer){
             return;
         }
-        if (nextPlayerIndex < playerSpawns.Length){
-            Player newPlayer = Instantiate(playerPrefab, playerSpawns[nextPlayerIndex].position, Quaternion.identity);
-            newPlayer.NetworkObject.SpawnWithOwnership(clientId);
-            if (playerSpawns[nextPlayerIndex].rotation.y != 0){
-                newPlayer.SetBodySprite(true);
-            }
-            nextPlayerIndex++;
-        } else{
-            networkBehaviour.SendRoomIsFullRpc(clientId);
+        if (gameHasStarted){
+            networkBehaviour.SendCantJoinRpc(true, clientId);
             manager.DisconnectClient(clientId);
+            return;
         }
+        if (unusedSpawnIndexes.Count < 1){
+            networkBehaviour.SendCantJoinRpc(false, clientId);
+            manager.DisconnectClient(clientId);
+            return;
+        }
+        Transform playerSpawn = playerSpawns[unusedSpawnIndexes[0]];
+        Player newPlayer = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
+        newPlayer.NetworkObject.SpawnWithOwnership(clientId);
+        if (playerSpawn.rotation.y != 0){
+            newPlayer.SetBodySprite(true);
+        }
+        usedSpawnIndexes.Add(clientId, unusedSpawnIndexes[0]);
+        unusedSpawnIndexes.RemoveAt(0);
     }
     
     public void StartClient(string ipAddress){
@@ -106,27 +129,34 @@ public class GameManager : MonoBehaviour {
         Debug.Log($"Starting and client and connecting to: {transport.ConnectionData.Address}");
         isConnecting = true;
         Invoke(nameof(CheckIfConnectSuccessful), connectTimeout);
+        NetworkManager.Singleton.OnConnectionEvent += OnClientConnect;
         NetworkManager.Singleton.StartClient();
     }
 
     private void CheckIfConnectSuccessful(){
+        NetworkManager.Singleton.OnConnectionEvent -= OnClientConnect;
         if (!isConnecting){
             return;
         }
         isConnecting = false;
-        print("invoke called");
         if (NetworkManager.Singleton.IsConnectedClient){
             mainMenu.SwapToJoinPage();
-            print("is connected");
         } else {
-            print("is not connected");
             mainMenu.CantFindHost();
-            try{
-                NetworkManager.Singleton.Shutdown();
-            } catch(Exception e){
-                Console.WriteLine(e);
-            }
+            NetworkManager.Singleton.Shutdown();
         }
+    }
+    private void OnClientConnect(NetworkManager manager, ConnectionEventData eventData){
+        if (eventData.EventType != ConnectionEvent.ClientConnected){
+            return;
+        }
+        isConnecting = false;
+        mainMenu.SwapToJoinPage();
+    }
+
+    public void Disconnect(){
+        isConnecting = false;
+        NetworkManager.Singleton.Shutdown();
     }
     
     public void SendStartGameRpc(){
@@ -134,11 +164,16 @@ public class GameManager : MonoBehaviour {
     }
     public void StartGame(){
         // TODO enable input.
+        gameHasStarted = true;
         mainMenu.SwapToHud();
     }
 
-    public void RoomIsFull(){
-        mainMenu.HostHasMaxPlayers();
+    public void CantJoin(bool gameHasStartedOnServer){
+        if (gameHasStartedOnServer){
+            mainMenu.GameHasStarted();
+        } else{
+            mainMenu.HostHasMaxPlayers();
+        }
         mainMenu.SwapToStartPage();
         isConnecting = false;
     }

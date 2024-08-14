@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +22,10 @@ public class MainMenuUI : MonoBehaviour {
     [SerializeField] private GameObject joinPage;
     [SerializeField] private Button disconnectButton;
 
-    private const string CantFindHostMessage = "Can't find host at IP address!", HostHasMaxPlayersMessage = "Host already has max players!";
+    private const string
+        CantFindHostMessage = "Can't find host at IP address!",
+        HostHasMaxPlayersMessage = "Host already has max players!",
+        GameHasStartedMessage = "Game has already started!";
 
     private string ipAddress;
     
@@ -55,8 +57,8 @@ public class MainMenuUI : MonoBehaviour {
             GUIUtility.systemCopyBuffer = ipAddress;
         });
         disconnectButton.onClick.AddListener(() => {
-            joinPage.SetActive(false);
-            startPage.SetActive(true);
+            SwapToStartPage();
+            gameManager.Disconnect();
         });
     }
 
@@ -79,6 +81,9 @@ public class MainMenuUI : MonoBehaviour {
     }
     public void HostHasMaxPlayers(){
         joinErrorText.text = HostHasMaxPlayersMessage;
+    }
+    public void GameHasStarted(){
+        joinErrorText.text = GameHasStartedMessage;
     }
     
     public void SwapToHud(){
