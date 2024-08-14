@@ -1,14 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MainMenuUI : MonoBehaviour {
+    // Start Page
     [SerializeField] private Button hostButton;
     [SerializeField] private Button joinButton;
+    [SerializeField] private Toggle localhostToggle;
+    [SerializeField] private TMP_InputField ipInputField;
+    // Host Page
+    [SerializeField] private Button startButton;
+    [SerializeField] private TextMeshProUGUI currentPlayersText;
+    [SerializeField] private TextMeshProUGUI ipAddressText;
+    [SerializeField] private Button copyIpButton;
+    // Join Page
+    [SerializeField] private Button disconnectButton;
+    // All Pages
     [SerializeField] private Button quitButton;
-    // Start is called before the first frame update
+
     private void Awake(){
         hostButton.onClick.AddListener(() => {
             hostButton.gameObject.SetActive(false);

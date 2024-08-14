@@ -55,6 +55,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hostButton: {fileID: 4785502153119276172}
   joinButton: {fileID: 1147179002186531295}
+  localhostToggle: {fileID: 5654097423387995407}
+  ipInputField: {fileID: 3366764901914388089}
+  startButton: {fileID: 191815912460341188}
+  currentPlayersText: {fileID: 3471892541368090956}
+  ipAddressText: {fileID: 8231388859881582981}
+  copyIpButton: {fileID: 349425205283661990}
+  disconnectButton: {fileID: 4130256315699346229}
   quitButton: {fileID: 3587654908966655875}
 --- !u!1 &482636702525629480
 GameObject:
@@ -1240,7 +1247,7 @@ GameObject:
   - component: {fileID: 2116058462436812355}
   - component: {fileID: 8231388859881582981}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: IP Address Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2026,7 +2033,7 @@ GameObject:
   - component: {fileID: 169980811028929279}
   - component: {fileID: 5646771026770732309}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Waiting Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2683,7 +2690,7 @@ GameObject:
   - component: {fileID: 861013197104073434}
   - component: {fileID: 3471892541368090956}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Current Players Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
