@@ -48,12 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e803b4ba585c3364486b151f02fd6357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 7106289756435719473, guid: 467cf4e7786ff3c40976f95d8d419b26, type: 3}
   playerSpawns:
   - {fileID: 4259636189036427653}
   - {fileID: 5393552155803226579}
   - {fileID: 8505355063730810694}
   - {fileID: 2277617476631290157}
+  playerPrefab: {fileID: 7106289756435719473, guid: 467cf4e7786ff3c40976f95d8d419b26, type: 3}
+  connectTimeout: 1
 --- !u!1 &3101393969441337735
 GameObject:
   m_ObjectHideFlags: 0

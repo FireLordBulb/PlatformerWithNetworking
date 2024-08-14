@@ -53,15 +53,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6166a8a2b32cc44a837cfe57c2ac08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPage: {fileID: 2250702627616190722}
   hostButton: {fileID: 4785502153119276172}
   joinButton: {fileID: 1147179002186531295}
   localhostToggle: {fileID: 5654097423387995407}
   ipInputField: {fileID: 3366764901914388089}
   joinErrorText: {fileID: 3744637457159908573}
+  hostPage: {fileID: 1423688460274842937}
   startButton: {fileID: 191815912460341188}
   currentPlayersText: {fileID: 3471892541368090956}
   ipAddressText: {fileID: 8231388859881582981}
   copyIpButton: {fileID: 349425205283661990}
+  joinPage: {fileID: 8540739194057543284}
   disconnectButton: {fileID: 4130256315699346229}
 --- !u!1 &482636702525629480
 GameObject:

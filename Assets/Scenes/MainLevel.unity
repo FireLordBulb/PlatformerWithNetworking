@@ -301,6 +301,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5010904341257265117, guid: 1b506a146dcde8940a1f5c65f8640c70, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1964101386
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010904341257265117, guid: 1b506a146dcde8940a1f5c65f8640c70, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 3723767618
+      objectReference: {fileID: 0}
     - target: {fileID: 8492227884653317841, guid: 1b506a146dcde8940a1f5c65f8640c70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0

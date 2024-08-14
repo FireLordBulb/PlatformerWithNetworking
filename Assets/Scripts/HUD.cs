@@ -17,6 +17,8 @@ public class HUD : MonoBehaviour {
             return;
         }
         Instance = this;
+        
+        gameObject.SetActive(false);
     }
     
     public void SetHeartsLeft(int heartsLeft){
