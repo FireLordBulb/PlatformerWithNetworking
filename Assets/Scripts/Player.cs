@@ -41,6 +41,7 @@ public class Player : NetworkBehaviour {
     private bool isOnSolidGround;
     private bool canDoubleJump;
 
+    public new NetworkObject NetworkObject => networkObject;
     private Vector2 CurrentDirection => !IsServer && IsOwner ? localCurrentDirection : networkCurrentDirection.Value;
     public void Awake(){
         blade.SetWielder(this);
@@ -80,7 +81,7 @@ public class Player : NetworkBehaviour {
             localCurrentDirection = direction;
         }
     }
-    private void SetBodySprite(bool flipX){
+    public void SetBodySprite(bool flipX){
         if (body.flipX == flipX || blade.IsSwinging){
             return;
         }
@@ -246,8 +247,6 @@ public class Player : NetworkBehaviour {
         HealthUI.Instance.SetHeartsLeft(healthPoints);
         print($"Client {OwnerClientId}'s player got hit!\n{healthPoints} health points left.");
     }
-    // Should only be sent by server, the if-statement checks that this is the case on all unmodified clients,
-    // so a hacked client can't use this to alter the state of other clients.
     [Rpc(SendTo.NotServer)]
     private void SetBodySpriteRpc(bool flipX, RpcParams rpcParams = default){
         if (Util.SenderIsServer(rpcParams)){

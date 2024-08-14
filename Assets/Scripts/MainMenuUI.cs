@@ -11,10 +11,9 @@ public class MainMenuUI : MonoBehaviour {
     // Start is called before the first frame update
     private void Awake(){
         hostButton.onClick.AddListener(() => {
-            NetworkManager.Singleton.StartHost();
             hostButton.gameObject.SetActive(false);
             joinButton.gameObject.SetActive(false);
-            Debug.Log("Started a Host");
+            GameManager.Instance.StartHost();
         });
         joinButton.onClick.AddListener(() => {
             NetworkManager.Singleton.StartClient();
