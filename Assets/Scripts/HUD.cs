@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthUI : MonoBehaviour {
-    public static HealthUI Instance;
+public class HUD : MonoBehaviour {
+    public static HUD Instance;
 
     [SerializeField] private Image[] hearts;
     [SerializeField] private Sprite fullHeart;
@@ -18,6 +18,7 @@ public class HealthUI : MonoBehaviour {
         }
         Instance = this;
     }
+    
     public void SetHeartsLeft(int heartsLeft){
         for (int i = 0; i < hearts.Length; i++){
             hearts[i].sprite = i < heartsLeft ? fullHeart : brokenHeart;

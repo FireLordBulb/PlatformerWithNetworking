@@ -244,7 +244,7 @@ public class Player : NetworkBehaviour {
             return;
         }
         healthPoints = serverHealthPoints;
-        HealthUI.Instance.SetHeartsLeft(healthPoints);
+        HUD.Instance.SetHeartsLeft(healthPoints);
         print($"Client {OwnerClientId}'s player got hit!\n{healthPoints} health points left.");
     }
     [Rpc(SendTo.NotServer)]

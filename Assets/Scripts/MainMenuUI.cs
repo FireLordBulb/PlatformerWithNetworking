@@ -18,9 +18,7 @@ public class MainMenuUI : MonoBehaviour {
     [SerializeField] private Button copyIpButton;
     // Join Page
     [SerializeField] private Button disconnectButton;
-    // All Pages
-    [SerializeField] private Button quitButton;
-
+    
     private void Awake(){
         hostButton.onClick.AddListener(() => {
             hostButton.gameObject.SetActive(false);
@@ -33,6 +31,5 @@ public class MainMenuUI : MonoBehaviour {
             joinButton.gameObject.SetActive(false);
             Debug.Log("Started a Client");
         });
-        quitButton.onClick.AddListener(Application.Quit);
     }
 }
