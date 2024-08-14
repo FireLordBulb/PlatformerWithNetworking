@@ -11,6 +11,7 @@ public class MainMenuUI : MonoBehaviour {
     [SerializeField] private Button joinButton;
     [SerializeField] private Toggle localhostToggle;
     [SerializeField] private TMP_InputField ipInputField;
+    [SerializeField] private TextMeshProUGUI joinErrorText;
     // Host Page
     [SerializeField] private Button startButton;
     [SerializeField] private TextMeshProUGUI currentPlayersText;
@@ -18,18 +19,35 @@ public class MainMenuUI : MonoBehaviour {
     [SerializeField] private Button copyIpButton;
     // Join Page
     [SerializeField] private Button disconnectButton;
+
+    private const string CantFindHostMessage = "Can't find host at IP address!", HostMaxPlayersMessage = "Host already has max players!";
     
     private void Awake(){
+        GameManager gameManager = GameManager.Instance;
+        
         hostButton.onClick.AddListener(() => {
             hostButton.gameObject.SetActive(false);
             joinButton.gameObject.SetActive(false);
-            GameManager.Instance.StartHost();
+            gameManager.StartHost(localhostToggle.isOn);
         });
         joinButton.onClick.AddListener(() => {
-            NetworkManager.Singleton.StartClient();
             hostButton.gameObject.SetActive(false);
             joinButton.gameObject.SetActive(false);
-            Debug.Log("Started a Client");
+            gameManager.StartClient(ipInputField.text);
+        });
+        // Clear any error message when the IP address is edited.
+        ipInputField.onValueChanged.AddListener(value => {
+            joinErrorText.text = "";
+        });
+        //
+        startButton.onClick.AddListener(() => {
+            
+        });
+        copyIpButton.onClick.AddListener(() => {
+            
+        });
+        disconnectButton.onClick.AddListener(() => {
+            
         });
     }
 }

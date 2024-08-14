@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] private Player playerPrefab;
     [SerializeField] private Transform[] playerSpawns;
-
+    
+    private const string Localhost = "127.0.0.1";
+    
     private UnityTransport transport;
     private int nextPlayerIndex;
     
@@ -27,7 +29,20 @@ public class GameManager : MonoBehaviour {
         transport = (UnityTransport)NetworkManager.Singleton.NetworkConfig.NetworkTransport;
     }
     
-    public static string GetLocalIPAddress()
+    
+    public void StartHost(bool doUseLocalhost){
+        NetworkManager.Singleton.StartHost();
+        transport.ConnectionData.Address = doUseLocalhost ? Localhost : GetLocalIPAddress();
+        print($"Started a Host: {transport.ConnectionData.Address}");
+        SpawnPlayer(NetworkManager.Singleton, NetworkManager.Singleton.LocalClientId);
+        NetworkManager.Singleton.OnConnectionEvent += (manager, eventData) => {
+            if (eventData.EventType == ConnectionEvent.ClientConnected){
+                SpawnPlayer(manager, eventData.ClientId);
+            }
+        };
+    }
+    
+    private static string GetLocalIPAddress()
     {
         IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
         // ReSharper disable once LoopCanBeConvertedToQuery
@@ -36,19 +51,7 @@ public class GameManager : MonoBehaviour {
                 return ip.ToString();
             }
         }
-        return null;
-    }
-    
-    public void StartHost(){
-        NetworkManager.Singleton.StartHost();
-        print($"Started a Host: {transport.ConnectionData.Address}");
-        print($"Local IP: {GetLocalIPAddress()}");
-        SpawnPlayer(NetworkManager.Singleton, NetworkManager.Singleton.LocalClientId);
-        NetworkManager.Singleton.OnConnectionEvent += (manager, eventData) => {
-            if (eventData.EventType == ConnectionEvent.ClientConnected){
-                SpawnPlayer(manager, eventData.ClientId);
-            }
-        };
+        return Localhost;
     }
     
     private void SpawnPlayer(NetworkManager manager, ulong clientId){
@@ -66,5 +69,11 @@ public class GameManager : MonoBehaviour {
             // TODO send connect failed Rpc
             manager.DisconnectClient(clientId);
         }
+    }
+    
+    public void StartClient(string ipAddress){
+        transport.ConnectionData.Address = ipAddress;
+        Debug.Log($"Starting and client and connecting to: {transport.ConnectionData.Address}");
+        NetworkManager.Singleton.StartClient();
     }
 }
