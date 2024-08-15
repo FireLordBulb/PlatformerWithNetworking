@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour {
     
     private GameManagerNetworkBehaviour networkBehaviour;
     private UnityTransport transport;
-    private MainMenuUI mainMenu;
+    private MainMenu mainMenu;
     private readonly Stack<int> unusedSpawnIndexes = new();
     private readonly Dictionary<ulong, Player> players = new();
     private bool isConnecting;
@@ -55,9 +55,8 @@ public class GameManager : MonoBehaviour {
     private void Start(){
         transport = (UnityTransport)NetworkManager.Singleton.NetworkConfig.NetworkTransport;
     }
-    public void SetMainMenu(MainMenuUI mainMenuUI){
-        
-        mainMenu = mainMenuUI;
+    public void SetMainMenu(MainMenu newMainMenu){
+        mainMenu = newMainMenu;
     }
     
     public string StartHost(bool doUseLocalhost){

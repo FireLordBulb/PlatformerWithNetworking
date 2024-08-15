@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuUI : MonoBehaviour {
+public class MainMenu : MonoBehaviour {
     [Header("Start Page")]
     [SerializeField] private GameObject startPage;
     [SerializeField] private Button hostButton;
