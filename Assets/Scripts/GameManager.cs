@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour {
             return;
         }
         transport.ConnectionData.Address = ipAddress;
-        Debug.Log($"Starting and client and connecting to: {transport.ConnectionData.Address}");
+        Debug.Log($"Starting a client and connecting to: {transport.ConnectionData.Address}");
         isConnecting = true;
         Invoke(nameof(CheckIfConnectSuccessful), connectTimeout);
         NetworkManager.Singleton.OnConnectionEvent += OnClientConnect;

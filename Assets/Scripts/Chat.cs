@@ -67,6 +67,8 @@ public class Chat : MonoBehaviour {
     }
 
     public void RemoveUsername(ulong clientId){
-        ChatManager.RemoveUsername(clientId);
+        if (ChatManager){
+            ChatManager.RemoveUsername(clientId);
+        }
     }
 }
