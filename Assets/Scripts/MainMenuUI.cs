@@ -21,13 +21,17 @@ public class MainMenuUI : MonoBehaviour {
     // Join Page
     [SerializeField] private GameObject joinPage;
     [SerializeField] private Button disconnectButton;
+    // Game Over Page
+    [SerializeField] private GameObject gameOverPage;
+    [SerializeField] private TextMeshProUGUI gameResultText;
+    [SerializeField] private Button restartButton;
 
     private const string
         CantFindHostMessage = "Can't find host at IP address!",
         HostHasMaxPlayersMessage = "Host already has max players!",
         GameHasStartedMessage = "Game has already started!",
-        YouLostMessage = "You lost!",
-        YouWonMessage = "You won!";
+        YouLostMessage = "The game has ended. You lost!",
+        YouWonMessage = "The game has ended. You won!";
 
     private string ipAddress;
     
@@ -96,9 +100,8 @@ public class MainMenuUI : MonoBehaviour {
     public void SwapToGameOverPage(bool isWinner){
         hostPage.SetActive(false);
         joinPage.SetActive(false);
-        //gameOverPage.SetActive(false);
-        //gameResultText.text = isWinner ? YouWonMessage : LostWonMessage;
-        print(isWinner ? YouWonMessage : YouLostMessage);
+        gameOverPage.SetActive(true);
+        gameResultText.text = isWinner ? YouWonMessage : YouLostMessage;
         gameObject.SetActive(true);
     }
 }

@@ -167,7 +167,6 @@ public class GameManager : MonoBehaviour {
         if (gameHasStarted){
             return;
         }
-        // TODO enable input.
         gameHasStarted = true;
         mainMenu.SwapToHud();
     }
@@ -191,7 +190,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void EndGame(ulong winnerClientId){
-        gameHasStarted = false;
+        gameIsOver = true;
         mainMenu.SwapToGameOverPage(winnerClientId == NetworkManager.Singleton.LocalClientId);
     }
 }
