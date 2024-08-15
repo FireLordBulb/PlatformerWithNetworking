@@ -15,8 +15,8 @@ public class PlayerInput : NetworkBehaviour {
 	private bool isHacked;
 #endif
 	
-	private void Awake(){
-		playerActions.Add(BinaryInputAction.Jump, player.Jump);
+    private void Awake(){
+	    playerActions.Add(BinaryInputAction.Jump, player.Jump);
 		playerActions.Add(BinaryInputAction.StopJumping, player.StopJumping);
 		playerActions.Add(BinaryInputAction.Attack, player.Attack);
 		playerActions.Add(BinaryInputAction.Spell, player.CastSpell);
@@ -58,7 +58,7 @@ public class PlayerInput : NetworkBehaviour {
 	}
 	public void FixedUpdate(){
 	     Vector2 movementDirection = actions.Direction.ReadValue<Vector2>();
-	     if (CanControlPlayer() && movementDirection != previousDirection){
+	     if (movementDirection != previousDirection && CanControlPlayer()){
 		     player.SetMoveDirection(movementDirection);
 		     if (!IsServer){
 			     MoveRpc(movementDirection);
@@ -74,35 +74,35 @@ public class PlayerInput : NetworkBehaviour {
 		     isHacked = false;
 	     }
 #endif
-     }
-     private bool CanControlPlayer(){
+	}
+	private bool CanControlPlayer(){
 #if UNITY_EDITOR
-	     return player.IsOwner || isHacked;
-#else	  
-		return player.IsOwner;
+		return player.IsOwner && GameManager.Instance.PlayersCanMove || isHacked;
+#else
+		return player.IsOwner && GameManager.Instance.PlayersCanMove;
 #endif
-     }
+	}
      
-     [Rpc(SendTo.Server)]
-     private void BinaryInputActionRpc(BinaryInputAction inputAction, RpcParams rpcParams = default){
-	     if (IsPlayerOwnedBySender(rpcParams)){
-		     playerActions[inputAction]();
-	     }
-     }
-     [Rpc(SendTo.Server)]
-     private void MoveRpc(Vector2 direction, RpcParams rpcParams = default){
-		 if (IsPlayerOwnedBySender(rpcParams)){ 
-			 player.SetMoveDirection(direction);
-	     }
-     }
-     private bool IsPlayerOwnedBySender(RpcParams rpcParams){
-	     return rpcParams.Receive.SenderClientId == player.OwnerClientId;
-     }
-     
-     private enum BinaryInputAction {
-	     Jump,
-	     StopJumping,
-	     Attack,
-	     Spell
-     }
+	[Rpc(SendTo.Server)] 
+	private void BinaryInputActionRpc(BinaryInputAction inputAction, RpcParams rpcParams = default){
+		if (SenderCanControlPlayer(rpcParams)){
+			playerActions[inputAction]();
+		}
+	}
+	[Rpc(SendTo.Server)]
+	private void MoveRpc(Vector2 direction, RpcParams rpcParams = default){
+		if (SenderCanControlPlayer(rpcParams)){ 
+			player.SetMoveDirection(direction);
+		}
+	}
+	private bool SenderCanControlPlayer(RpcParams rpcParams){
+		return rpcParams.Receive.SenderClientId == player.OwnerClientId && GameManager.Instance.PlayersCanMove;
+	}
+	 
+	private enum BinaryInputAction {
+		Jump,
+		StopJumping,
+		Attack, 
+		Spell
+	}
 }
