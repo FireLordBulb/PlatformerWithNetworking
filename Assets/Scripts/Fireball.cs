@@ -12,14 +12,13 @@ public class Fireball : NetworkBehaviour {
 
     private Vector3 positionDelta;
     private bool isDespawning;
-    private bool isMovingLeft;
     
     private void OnTriggerEnter2D(Collider2D other){
         if (!other.isTrigger && AttackHitbox.TryGetPlayer(other.attachedRigidbody, out Player player)){
             if (player == hitbox.Player){
                 return;
             }
-            player.GetHit(hitbox, Util.ToDirection(isMovingLeft));
+            player.GetHit(hitbox, transform.right);
         }
         // Only the server handles despawning networkObjects.
         if (!IsServer){
@@ -49,12 +48,11 @@ public class Fireball : NetworkBehaviour {
     }
     
     [Rpc(SendTo.Everyone)]
-    public void StartMovingRpc(bool moveLeft, RpcParams rpcParams = default){
+    public void StartMovingRpc(float direction, RpcParams rpcParams = default){
         if (!Util.SenderIsServer(rpcParams)){
             return;
         }
-        isMovingLeft = moveLeft;
-        sprite.flipX = moveLeft;
-        positionDelta = speed*Time.fixedDeltaTime * Util.ToDirection(moveLeft);
+        transform.eulerAngles = new Vector3(0, direction, 0);
+        positionDelta = speed*Time.fixedDeltaTime*transform.right;
     }
 }

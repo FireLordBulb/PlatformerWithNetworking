@@ -111,11 +111,8 @@ public class GameManager : MonoBehaviour {
         }
         int spawnIndex = unusedSpawnIndexes.Pop();
         Transform playerSpawn = playerSpawns[spawnIndex];
-        Player newPlayer = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
+        Player newPlayer = Instantiate(playerPrefab, playerSpawn.position, playerSpawn.rotation);
         newPlayer.NetworkObject.SpawnWithOwnership(clientId);
-        if (playerSpawn.rotation.y != 0){
-            newPlayer.SetBodySprite(true);
-        }
         newPlayer.SpawnIndex = spawnIndex;
         players.Add(clientId, newPlayer);
     }

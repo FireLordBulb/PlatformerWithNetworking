@@ -8,9 +8,6 @@ public class Blade : MonoBehaviour {
     [SerializeField] private float swingTime;
     [SerializeField] private BladeHitbox[] hitboxes;
 
-    private const float WholeRotation = 360, HalfRotation = WholeRotation/2;
-    private const float FacingRightAngle = 0, FacingLeftAngle = HalfRotation;
-
     private Player player;
     private float swingSpeed;
     private float endAngle;
@@ -31,7 +28,7 @@ public class Blade : MonoBehaviour {
         }
     }
     
-    public void StartSwinging(float yDirection, bool isFacingLeft, bool isOnSolidGround){
+    public void StartSwinging(float yDirection, bool isOnSolidGround){
         if (IsSwinging){
             return;
         }
@@ -41,16 +38,12 @@ public class Blade : MonoBehaviour {
         if (isOnSolidGround){
             yDirection = Mathf.Max(yDirection, 0);
         }
-        // Sideways swings are always to the "Right" z-angle-wise, since the y-angle flip handles left/right.
+        // Sideways swings are always to the "Right" z-angle-wise, since the player's y-angle flip handles left/right.
         float xDirection = yDirection == 0 ? Util.Right : 0;
         float directionAngle = Mathf.Rad2Deg*Mathf.Atan2(yDirection, xDirection);
-        SwingDirection = new Vector2(xDirection*Util.ToDirectionSign(isFacingLeft), yDirection);
-        transform.eulerAngles = new Vector3(
-            transform.eulerAngles.x, 
-            isFacingLeft ? FacingLeftAngle : FacingRightAngle,
-            directionAngle + halfSwingAngle
-        );
+        transform.localEulerAngles = new Vector3(0, 0, directionAngle+halfSwingAngle);
         endAngle = directionAngle - halfSwingAngle;
+        SwingDirection = new Vector2(xDirection*player.transform.right.x, yDirection);
     }
     
     private void Update(){
@@ -59,7 +52,7 @@ public class Blade : MonoBehaviour {
         }
         float newAngle = transform.eulerAngles.z - swingSpeed*Time.deltaTime;
         // Convert newAngle from "0 to 360"-format to "-180 to +180"-format so it can be correctly compared with endAngle.
-        newAngle = (newAngle+HalfRotation)%WholeRotation - HalfRotation;
+        newAngle = (newAngle+Util.HalfRotation)%Util.WholeRotation - Util.HalfRotation;
         if (newAngle < endAngle){
             SetSwinging(false);
             return;

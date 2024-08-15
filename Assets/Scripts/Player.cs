@@ -58,10 +58,10 @@ public class Player : NetworkBehaviour {
         int yDirection = (int)direction.y;
         switch(xDirection){
             case Util.Right:
-                SetBodySprite(false);
+                SetSpriteRotation(Util.FacingRightAngle);
                 break;
             case Util.Left:
-                SetBodySprite(true);
+                SetSpriteRotation(Util.FacingLeftAngle);
                 break;
             case 0:
                 break;
@@ -86,14 +86,14 @@ public class Player : NetworkBehaviour {
             localCurrentDirection = direction;
         }
     }
-    public void SetBodySprite(bool flipX){
-        if (body.flipX == flipX || blade.IsSwinging){
+    public void SetSpriteRotation(float rotation){
+        if (blade.IsSwinging){
             return;
         }
-        body.flipX = flipX;
-        if (IsServer){
-            SetBodySpriteRpc(flipX);
-        }
+        transform.eulerAngles = new Vector3(0, rotation, 0);
+        // The cooldown bar doesn't flip when the player does. It always stays the same.
+        fireballCooldownBackground.transform.rotation = Quaternion.identity;
+        
     }
     public void Jump(){
         if (!isOnGround){
@@ -113,7 +113,7 @@ public class Player : NetworkBehaviour {
         jumpHoldTimeLeft = 0;
     }
     public void Attack(){
-        blade.StartSwinging(CurrentDirection.y, body.flipX, isOnSolidGround);
+        blade.StartSwinging(CurrentDirection.y, isOnSolidGround);
         if (IsServer){
             StartSwingingRpc();
         }
@@ -132,7 +132,7 @@ public class Player : NetworkBehaviour {
         Fireball newFireball = Instantiate(fireballPrefab, fireballSpawn.position, Quaternion.identity);
         newFireball.SetCaster(this);
         newFireball.GetComponent<NetworkObject>().Spawn();
-        newFireball.StartMovingRpc(body.flipX);
+        newFireball.StartMovingRpc(transform.eulerAngles.y);
     }
     private void StartFireballCooldown(){
         fireballCooldownBackground.SetActive(true);
@@ -240,7 +240,7 @@ public class Player : NetworkBehaviour {
     [Rpc(SendTo.Everyone)]
     private void StartSwingingRpc(RpcParams rpcParams = default){
         if (Util.SenderIsServer(rpcParams)){
-            blade.StartSwinging(CurrentDirection.y, body.flipX, isOnSolidGround);
+            blade.StartSwinging(CurrentDirection.y, isOnSolidGround);
         }
     }
     [Rpc(SendTo.NotOwner)]
@@ -256,11 +256,5 @@ public class Player : NetworkBehaviour {
         }
         healthPoints = serverHealthPoints;
         HUD.Instance.SetHeartsLeft(healthPoints);
-    }
-    [Rpc(SendTo.NotServer)]
-    private void SetBodySpriteRpc(bool flipX, RpcParams rpcParams = default){
-        if (Util.SenderIsServer(rpcParams)){
-            body.flipX = flipX;
-        }
     }
 }
