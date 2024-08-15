@@ -77,9 +77,9 @@ public class PlayerInput : NetworkBehaviour {
 	}
 	private bool CanControlPlayer(){
 #if UNITY_EDITOR
-		return player.IsOwner && GameManager.Instance.PlayersCanMove || isHacked;
+		return player.IsOwner && GameManager.Instance.GameIsOngoing && !Chat.Instance.gameObject.activeSelf || isHacked;
 #else
-		return player.IsOwner && GameManager.Instance.PlayersCanMove;
+		return player.IsOwner && GameManager.Instance.GameIsOngoing && !Chat.Instance.gameObject.activeSelf;
 #endif
 	}
      
@@ -96,7 +96,7 @@ public class PlayerInput : NetworkBehaviour {
 		}
 	}
 	private bool SenderCanControlPlayer(RpcParams rpcParams){
-		return rpcParams.Receive.SenderClientId == player.OwnerClientId && GameManager.Instance.PlayersCanMove;
+		return rpcParams.Receive.SenderClientId == player.OwnerClientId && GameManager.Instance.GameIsOngoing;
 	}
 	 
 	private enum BinaryInputAction {

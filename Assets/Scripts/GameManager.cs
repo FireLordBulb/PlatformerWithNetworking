@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
     private bool gameHasStarted;
     private bool gameIsOver;
 
-    public bool PlayersCanMove => gameHasStarted && !gameIsOver;
+    public bool GameIsOngoing => gameHasStarted && !gameIsOver;
     private bool IsConnected => NetworkManager.Singleton.IsServer || NetworkManager.Singleton.IsClient || isConnecting;
     
     private void Awake(){
@@ -181,6 +181,7 @@ public class GameManager : MonoBehaviour {
 
     public void RemovePlayer(ulong playerClientId){
         players.Remove(playerClientId);
+        Chat.Instance.RemoveUsername(playerClientId);
         if (!gameHasStarted || players.Count != 1){
             return;
         }

@@ -1,63 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
-public class Chat : NetworkBehaviour {
+public class Chat : MonoBehaviour {
+    public static Chat Instance;
+    
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private TextMeshProUGUI placeholder;
+    [SerializeField] private ChatManager chatManagerPrefab;
+    [SerializeField] private InputAction toggleKey;
 
-    private readonly Dictionary<ulong, string> usernames = new();
+    public TextMeshProUGUI Text => text;
+    public ChatManager ChatManager {get; set;}
+    
+    private bool chatHasBeenActivated;
+    
     private void Awake(){
+        if (Instance != null){
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        
+        gameObject.SetActive(false);
+        toggleKey.performed += _ => {
+            if (!GameManager.Instance.GameIsOngoing){
+                return;
+            }
+            if (!chatHasBeenActivated){
+                chatHasBeenActivated = true;
+                if (NetworkManager.Singleton.IsServer){
+                    Instantiate(chatManagerPrefab).GetComponent<NetworkObject>().Spawn();
+                }
+            }
+            gameObject.SetActive(!gameObject.activeSelf);
+            if (gameObject.activeSelf){
+                inputField.ActivateInputField();
+            } else {
+                EventSystem.current.SetSelectedGameObject(null);
+            }
+        };
+        toggleKey.Enable();
+        
         inputField.onSubmit.AddListener(message => {
-            SendChatMessage(message);
+            message = message.Trim();
+            if (message.Length != 0){
+                ChatManager.SubmitMessageRPC(message);
+            }
             inputField.ActivateInputField();
             inputField.text = "";
         });
         inputField.onValueChanged.AddListener(message => inputField.text = message.TrimEnd('\n').TrimEnd('\v'));
+        inputField.onDeselect.AddListener(_ => {
+            gameObject.SetActive(false);
+        });
     }
-    private void SendChatMessage(string message){
-        message = message.Trim();
-        if (message.Length == 0){
-            return;
-        }
-        SubmitMessageRPC(message);
+    
+    public void SetPlaceholderText(string placeholderText){
+        placeholder.text = placeholderText;
     }
-    [Rpc(SendTo.Server)]
-    private void SubmitMessageRPC(string message, RpcParams rpcParams = default){
-        message = message.Trim();
-        if (message.Length == 0){
-            return;
-        }
-        ulong senderClientId = rpcParams.Receive.SenderClientId;
-        if (!usernames.TryGetValue(senderClientId, out string username)){
-            username = $"{senderClientId}";
-        }
-        AddChatLineRPC($"{username}: {message}");
-    }
-    [Rpc(SendTo.Everyone)]
-    private void AddChatLineRPC(string chatLine, RpcParams rpcParams = default){
-        if (rpcParams.Receive.SenderClientId == NetworkManager.ServerClientId){
-            text.text += $"\n{chatLine}";
-        }
-    }
-    [Rpc(SendTo.Server)]
-    private void UpdateUsernameRPC(string newUsername, RpcParams rpcParams = default){
-        newUsername = newUsername.Trim();
-        if (newUsername.Length == 0){
-            return;
-        }
-        ulong senderClientId = rpcParams.Receive.SenderClientId;
-        usernames.TryGetValue(senderClientId, out string currentUsername);
-        if (newUsername.Equals(currentUsername)){
-            return;
-        }
-        if (usernames.ContainsValue(newUsername)){
-            // TODO: Send message back saying username taken.
-            return;
-        }
-        usernames.Add(senderClientId, newUsername);
+
+    public void RemoveUsername(ulong clientId){
+        ChatManager.RemoveUsername(clientId);
     }
 }
