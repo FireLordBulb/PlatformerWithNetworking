@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using Unity.Netcode;
@@ -20,9 +21,9 @@ public class GameManager : MonoBehaviour {
     private UnityTransport transport;
     private MainMenuUI mainMenu;
     private readonly List<int> unusedSpawnIndexes = new();
-    private readonly Dictionary<ulong, int> usedSpawnIndexes = new();
+    private readonly Dictionary<ulong, Player> players = new();
     private bool isConnecting;
-    private bool gameHasStarted;
+    private bool gameIsOngoing;
 
     private bool IsConnected => NetworkManager.Singleton.IsServer || NetworkManager.Singleton.IsClient || isConnecting;
     
@@ -73,8 +74,9 @@ public class GameManager : MonoBehaviour {
                     mainMenu.SetCurrentPlayersText(NetworkManager.Singleton.ConnectedClients.Count);
                     break;
                 case ConnectionEvent.ClientDisconnected:
-                    unusedSpawnIndexes.Add(usedSpawnIndexes[eventData.ClientId]);
-                    usedSpawnIndexes.Remove(eventData.ClientId);
+                    // Insert at the start to prevent joining then disconnecting then joining again from letting a player cycle through different spawns.
+                    unusedSpawnIndexes.Insert(0, players[eventData.ClientId].SpawnIndex);
+                    RemovePlayer(eventData.ClientId);
                     break;
                 case ConnectionEvent.PeerConnected:
                 case ConnectionEvent.PeerDisconnected:
@@ -98,10 +100,7 @@ public class GameManager : MonoBehaviour {
     }
     
     private void SpawnPlayer(NetworkManager manager, ulong clientId){
-        if (!manager.IsServer){
-            return;
-        }
-        if (gameHasStarted){
+        if (gameIsOngoing){
             networkBehaviour.SendCantJoinRpc(true, clientId);
             manager.DisconnectClient(clientId);
             return;
@@ -117,7 +116,8 @@ public class GameManager : MonoBehaviour {
         if (playerSpawn.rotation.y != 0){
             newPlayer.SetBodySprite(true);
         }
-        usedSpawnIndexes.Add(clientId, unusedSpawnIndexes[0]);
+        players.Add(clientId, newPlayer);
+        newPlayer.SpawnIndex = unusedSpawnIndexes[0];
         unusedSpawnIndexes.RemoveAt(0);
     }
     
@@ -163,8 +163,11 @@ public class GameManager : MonoBehaviour {
         networkBehaviour.StartGameRpc();
     }
     public void StartGame(){
+        if (gameIsOngoing){
+            return;
+        }
         // TODO enable input.
-        gameHasStarted = true;
+        gameIsOngoing = true;
         mainMenu.SwapToHud();
     }
 
@@ -176,5 +179,18 @@ public class GameManager : MonoBehaviour {
         }
         mainMenu.SwapToStartPage();
         isConnecting = false;
+    }
+
+    public void RemovePlayer(ulong playerClientId){
+        players.Remove(playerClientId);
+        if (!gameIsOngoing || players.Count != 1){
+            return;
+        }
+        networkBehaviour.GameIsOverRpc(players.ToList()[0].Value.OwnerClientId);
+    }
+
+    public void EndGame(ulong winnerClientId){
+        gameIsOngoing = false;
+        mainMenu.SwapToGameOverPage(winnerClientId == NetworkManager.Singleton.LocalClientId);
     }
 }

@@ -34,10 +34,17 @@ public class GameManagerNetworkBehaviour : NetworkBehaviour {
 		CantJoinRpc(gameHasStarted, RpcTarget.Single(clientId, RpcTargetUse.Temp));
 	}
 	[Rpc(SendTo.SpecifiedInParams)]
-	public void CantJoinRpc(bool gameHasStarted, RpcParams rpcParams){
+	private void CantJoinRpc(bool gameHasStarted, RpcParams rpcParams){
 		if (!Util.SenderIsServer(rpcParams)){
 			return;
 		}
 		gameManager.CantJoin(gameHasStarted);
+	}
+	[Rpc(SendTo.Everyone)]
+	public void GameIsOverRpc(ulong winnerClientId, RpcParams rpcParams = default){
+		if (!Util.SenderIsServer(rpcParams)){
+			return;
+		}
+		gameManager.EndGame(winnerClientId);
 	}
 }

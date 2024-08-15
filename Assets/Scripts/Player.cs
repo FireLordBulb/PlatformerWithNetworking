@@ -41,6 +41,7 @@ public class Player : NetworkBehaviour {
     private bool isOnSolidGround;
     private bool canDoubleJump;
 
+    public int SpawnIndex {get; set;}
     public new NetworkObject NetworkObject => networkObject;
     private Vector2 CurrentDirection => !IsServer && IsOwner ? localCurrentDirection : networkCurrentDirection.Value;
     public void Awake(){
@@ -156,6 +157,7 @@ public class Player : NetworkBehaviour {
             return;
         }
         print($"Client {OwnerClientId}'s player died!");
+        GameManager.Instance.RemovePlayer(OwnerClientId);
         networkObject.Despawn();
     }
     private void Pogo(){
@@ -245,7 +247,6 @@ public class Player : NetworkBehaviour {
         }
         healthPoints = serverHealthPoints;
         HUD.Instance.SetHeartsLeft(healthPoints);
-        print($"Client {OwnerClientId}'s player got hit!\n{healthPoints} health points left.");
     }
     [Rpc(SendTo.NotServer)]
     private void SetBodySpriteRpc(bool flipX, RpcParams rpcParams = default){

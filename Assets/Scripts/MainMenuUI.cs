@@ -25,7 +25,9 @@ public class MainMenuUI : MonoBehaviour {
     private const string
         CantFindHostMessage = "Can't find host at IP address!",
         HostHasMaxPlayersMessage = "Host already has max players!",
-        GameHasStartedMessage = "Game has already started!";
+        GameHasStartedMessage = "Game has already started!",
+        YouLostMessage = "You lost!",
+        YouWonMessage = "You won!";
 
     private string ipAddress;
     
@@ -89,5 +91,14 @@ public class MainMenuUI : MonoBehaviour {
     public void SwapToHud(){
         gameObject.SetActive(false);
         HUD.Instance.gameObject.SetActive(true);
+    }
+
+    public void SwapToGameOverPage(bool isWinner){
+        hostPage.SetActive(false);
+        joinPage.SetActive(false);
+        //gameOverPage.SetActive(false);
+        //gameResultText.text = isWinner ? YouWonMessage : LostWonMessage;
+        print(isWinner ? YouWonMessage : YouLostMessage);
+        gameObject.SetActive(true);
     }
 }
