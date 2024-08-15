@@ -49,7 +49,7 @@ public class Player : NetworkBehaviour {
         healthPoints = maxHealth;
     }
     
-    public void Move(Vector2 direction){
+    public void SetMoveDirection(Vector2 direction){
         int xDirection = (int)direction.x;
         int yDirection = (int)direction.y;
         switch(xDirection){

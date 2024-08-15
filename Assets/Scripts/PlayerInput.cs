@@ -7,10 +7,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : NetworkBehaviour {
 	[SerializeField] private Player player;
+	
 	private Controls.MouseAndKeyboardActions actions;
+	private Vector2 previousDirection;
 #if UNITY_EDITOR
 	private bool isHacked;
 #endif
+	
 	private void Awake(){
 		Controls controls = new();
 		controls.Enable();
@@ -65,17 +68,13 @@ public class PlayerInput : NetworkBehaviour {
 	
 	public void FixedUpdate(){
 	     Vector2 movementDirection = actions.Direction.ReadValue<Vector2>();
-#if UNITY_EDITOR
-	     if (isHacked){
-		     //movementDirection *= 5;
-	     }
-#endif
-	     if (CanControlPlayer()){
-		     player.Move(movementDirection);
+	     if (CanControlPlayer() && movementDirection != previousDirection){
+		     player.SetMoveDirection(movementDirection);
 		     if (!IsServer){
 			     MoveRpc(movementDirection);
 		     }
 	     }
+	     previousDirection = movementDirection;
 #if UNITY_EDITOR
 	     if (Input.GetKey(KeyCode.Y)){
 		     print("Debug hacking on!");
@@ -121,7 +120,7 @@ public class PlayerInput : NetworkBehaviour {
      [Rpc(SendTo.Server)]
      private void MoveRpc(Vector2 direction, RpcParams rpcParams = default){
 		 if (IsPlayerOwnedBySender(rpcParams)){ 
-			 player.Move(direction);
+			 player.SetMoveDirection(direction);
 	     }
      }
      private bool IsPlayerOwnedBySender(RpcParams rpcParams){
