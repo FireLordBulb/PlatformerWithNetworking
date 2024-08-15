@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : NetworkBehaviour {
 	[SerializeField] private Player player;
-	
+
+	private readonly Dictionary<BinaryInputAction, Action> playerActions = new();
 	private Controls.MouseAndKeyboardActions actions;
 	private Vector2 previousDirection;
 #if UNITY_EDITOR
@@ -15,6 +16,11 @@ public class PlayerInput : NetworkBehaviour {
 #endif
 	
 	private void Awake(){
+		playerActions.Add(BinaryInputAction.Jump, player.Jump);
+		playerActions.Add(BinaryInputAction.StopJumping, player.StopJumping);
+		playerActions.Add(BinaryInputAction.Attack, player.Attack);
+		playerActions.Add(BinaryInputAction.Spell, player.CastSpell);
+		
 		Controls controls = new();
 		controls.Enable();
 		actions = controls.MouseAndKeyboard;
@@ -30,42 +36,26 @@ public class PlayerInput : NetworkBehaviour {
 		actions.Spell.performed -= SpellPerformed;
 	}
 	private void JumpPerformed(InputAction.CallbackContext _){
-		if (!CanControlPlayer()){
-			return;
-		}
-		player.Jump();
-		if (!IsServer){
-			JumpRpc();
-		}
+		InputActionPerformed(BinaryInputAction.Jump);
 	}
 	private void StopJumpingPerformed(InputAction.CallbackContext _){
-		if (!CanControlPlayer()){
-			return;
-		}
-		player.StopJumping();
-		if (!IsServer){
-			StopJumpingRpc();
-		}
+		InputActionPerformed(BinaryInputAction.StopJumping);
 	}
 	private void AttackPerformed(InputAction.CallbackContext _){
-		if (!CanControlPlayer()){
-			return;
-		}
-		player.Attack();
-		if (!IsServer){
-			AttackRpc();
-		}
+		InputActionPerformed(BinaryInputAction.Attack);
 	}
 	private void SpellPerformed(InputAction.CallbackContext _){
+		InputActionPerformed(BinaryInputAction.Spell);
+	}
+	private void InputActionPerformed(BinaryInputAction playerAction){
 		if (!CanControlPlayer()){
 			return;
 		}
-		player.CastSpell();
+		playerActions[playerAction]();
 		if (!IsServer){
-			SpellRpc();
+			BinaryInputActionRpc(playerAction);
 		}
 	}
-	
 	public void FixedUpdate(){
 	     Vector2 movementDirection = actions.Direction.ReadValue<Vector2>();
 	     if (CanControlPlayer() && movementDirection != previousDirection){
@@ -94,27 +84,9 @@ public class PlayerInput : NetworkBehaviour {
      }
      
      [Rpc(SendTo.Server)]
-     private void JumpRpc(RpcParams rpcParams = default){
+     private void BinaryInputActionRpc(BinaryInputAction inputAction, RpcParams rpcParams = default){
 	     if (IsPlayerOwnedBySender(rpcParams)){
-		     player.Jump();
-	     }
-     }
-     [Rpc(SendTo.Server)]
-     private void StopJumpingRpc(RpcParams rpcParams = default){
-	     if (IsPlayerOwnedBySender(rpcParams)){
-		     player.StopJumping();
-	     }
-     }
-     [Rpc(SendTo.Server)]
-     private void AttackRpc(RpcParams rpcParams = default){
-	     if (IsPlayerOwnedBySender(rpcParams)){
-		     player.Attack();
-	     }
-     }
-     [Rpc(SendTo.Server)]
-     private void SpellRpc(RpcParams rpcParams = default){
-	     if (IsPlayerOwnedBySender(rpcParams)){
-		     player.CastSpell();
+		     playerActions[inputAction]();
 	     }
      }
      [Rpc(SendTo.Server)]
@@ -125,5 +97,12 @@ public class PlayerInput : NetworkBehaviour {
      }
      private bool IsPlayerOwnedBySender(RpcParams rpcParams){
 	     return rpcParams.Receive.SenderClientId == player.OwnerClientId;
+     }
+     
+     private enum BinaryInputAction {
+	     Jump,
+	     StopJumping,
+	     Attack,
+	     Spell
      }
 }
