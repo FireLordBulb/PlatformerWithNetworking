@@ -1,27 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuUI : MonoBehaviour {
-    // Start Page
+    [Header("Start Page")]
     [SerializeField] private GameObject startPage;
     [SerializeField] private Button hostButton;
     [SerializeField] private Button joinButton;
     [SerializeField] private Toggle localhostToggle;
     [SerializeField] private TMP_InputField ipInputField;
     [SerializeField] private TextMeshProUGUI joinErrorText;
-    // Host Page
+    [Header("Host Page")]
     [SerializeField] private GameObject hostPage;
     [SerializeField] private Button startButton;
     [SerializeField] private TextMeshProUGUI currentPlayersText;
     [SerializeField] private TextMeshProUGUI ipAddressText;
     [SerializeField] private Button copyIpButton;
-    // Join Page
+    [Header("Join Page")]
     [SerializeField] private GameObject joinPage;
     [SerializeField] private Button disconnectButton;
-    // Game Over Page
+    [Header("Game Over Page")]
     [SerializeField] private GameObject gameOverPage;
     [SerializeField] private TextMeshProUGUI gameResultText;
     [SerializeField] private Button restartButton;
@@ -30,8 +33,8 @@ public class MainMenuUI : MonoBehaviour {
         CantFindHostMessage = "Can't find host at IP address!",
         HostHasMaxPlayersMessage = "Host already has max players!",
         GameHasStartedMessage = "Game has already started!",
-        YouLostMessage = "The game has ended. You lost!",
-        YouWonMessage = "The game has ended. You won!";
+        YouLostMessage = "You lost!",
+        YouWonMessage = "You won!";
 
     private string ipAddress;
     
@@ -65,6 +68,12 @@ public class MainMenuUI : MonoBehaviour {
         disconnectButton.onClick.AddListener(() => {
             SwapToStartPage();
             gameManager.Disconnect();
+        });
+        restartButton.onClick.AddListener(() => {
+            // Destroy the NetworkManager manually since it's set to "Don't destroy on load."
+            Destroy(NetworkManager.Singleton.GameObject());
+            // Reload the scene, resetting the entire game.
+            SceneManager.LoadScene(gameObject.scene.name);
         });
     }
 
