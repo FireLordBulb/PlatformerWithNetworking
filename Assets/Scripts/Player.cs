@@ -3,19 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Player : NetworkBehaviour {
-    // Components on the prefab.
+    [Header("Components on the prefab")]
     [SerializeField] private NetworkObject networkObject;
     [SerializeField] private Rigidbody2D rigidBody;
-    [SerializeField] private SpriteRenderer body;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Collider2D legCollider;
     [SerializeField] private Transform fireballSpawn;
     [SerializeField] private GameObject fireballCooldownBackground;
     [SerializeField] private Transform fireballCooldownBar;
     [SerializeField] private Blade blade;
-    // Config values.
+    [Header("Config values")]
     [SerializeField] private Fireball fireballPrefab;
+    [SerializeField] private Sprite localSprite;
     [SerializeField] private float fireballCooldownTime;
     [SerializeField] private float invisTime;
     [SerializeField] private float runningSpeed;
@@ -45,11 +47,16 @@ public class Player : NetworkBehaviour {
     public int SpawnIndex {get; set;}
     public new NetworkObject NetworkObject => networkObject;
     private Vector2 CurrentDirection => !IsServer && IsOwner ? localCurrentDirection : networkCurrentDirection.Value;
-    public void Awake(){
+    private void Awake(){
         blade.SetWielder(this);
         healthPoints = maxHealth;
     }
-
+    private void Start(){
+        if (IsOwner){
+            spriteRenderer.sprite = localSprite;
+        }
+    } 
+    
     public void ReapplyMoveDirection(){
         SetMoveDirection(CurrentDirection);
     }
