@@ -27,10 +27,10 @@ public class Player : NetworkBehaviour {
     [SerializeField] private float pogoImpulse;
     [SerializeField] private int maxHealth;
     
-    // Constants
+    // Constants.
     private const float MaxGroundDistance = 0.02f;
     
-    // Mutable state
+    // Mutable state.
     private readonly NetworkVariable<Vector2> networkCurrentDirection = new();
     private Vector2 localCurrentDirection;
     private float fireballCooldownTimeLeft;
@@ -156,7 +156,6 @@ public class Player : NetworkBehaviour {
         if (0 < healthPoints){
             return;
         }
-        print($"Client {OwnerClientId}'s player died!");
         GameManager.Instance.RemovePlayer(OwnerClientId);
         networkObject.Despawn();
     }

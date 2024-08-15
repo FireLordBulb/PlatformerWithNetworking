@@ -38,6 +38,7 @@ public class GameManagerNetworkBehaviour : NetworkBehaviour {
 		}
 		gameManager.CantJoin(gameHasStarted);
 	}
+	
 	[Rpc(SendTo.Everyone)]
 	public void GameIsOverRpc(ulong winnerClientId, RpcParams rpcParams = default){
 		if (!Util.SenderIsServer(rpcParams)){
