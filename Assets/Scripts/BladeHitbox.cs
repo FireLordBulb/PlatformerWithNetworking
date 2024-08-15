@@ -7,12 +7,16 @@ public class BladeHitbox : AttackHitbox {
     public Blade Blade {get; set;}
     
     private void OnTriggerEnter2D(Collider2D other){
+        bool otherIsPlayer = TryGetPlayer(other.attachedRigidbody, out Player otherPlayer);
         if (other.isTrigger){
-            // TODO sword on sword clank
+            if (other.TryGetComponent<BladeHitbox>(out _)){
+                Player.Parry();
+                otherPlayer.Parry();
+            }
             return;
         }
-        if (TryGetPlayer(other.attachedRigidbody, out Player player)){
-            player.GetHit(this, Blade.SwingDirection, true);
+        if (otherIsPlayer){
+            otherPlayer.GetHit(this, Blade.SwingDirection, true);
         }
     }
 }

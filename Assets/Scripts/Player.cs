@@ -22,7 +22,8 @@ public class Player : NetworkBehaviour {
     [SerializeField] private float jumpStartImpulse;
     [SerializeField] private float jumpHoldForce;
     [SerializeField] private float jumpHoldTime;
-    [SerializeField] private float knockbackImpulse;
+    [SerializeField] private float hitKnockbackImpulse;
+    [SerializeField] private float parryKnockbackImpulse;
     [SerializeField] private float sideUpwardsKnockbackImpulse;
     [SerializeField] private float pogoImpulse;
     [SerializeField] private int maxHealth;
@@ -48,7 +49,10 @@ public class Player : NetworkBehaviour {
         blade.SetWielder(this);
         healthPoints = maxHealth;
     }
-    
+
+    public void ReapplyMoveDirection(){
+        SetMoveDirection(CurrentDirection);
+    }
     public void SetMoveDirection(Vector2 direction){
         int xDirection = (int)direction.x;
         int yDirection = (int)direction.y;
@@ -130,11 +134,12 @@ public class Player : NetworkBehaviour {
         newFireball.GetComponent<NetworkObject>().Spawn();
         newFireball.StartMovingRpc(body.flipX);
     }
-    public void StartFireballCooldown(){
+    private void StartFireballCooldown(){
         fireballCooldownBackground.SetActive(true);
         fireballCooldownBar.localScale = Vector3.one;
         fireballCooldownTimeLeft = fireballCooldownTime;
     }
+    
     public void GetHit(AttackHitbox hitbox, Vector2 knockback, bool canCausePogo = false){
         if (0 < invisTimeLeft || hitbox.Player == this){
             return;
@@ -142,7 +147,7 @@ public class Player : NetworkBehaviour {
         if (canCausePogo){
             hitbox.Player.Pogo();
         }
-        knockback *= knockbackImpulse;
+        knockback *= hitKnockbackImpulse;
         if (knockback.y == 0){
             knockback.y += sideUpwardsKnockbackImpulse;
         }
@@ -158,6 +163,11 @@ public class Player : NetworkBehaviour {
         }
         GameManager.Instance.RemovePlayer(OwnerClientId);
         networkObject.Despawn();
+    }
+    public void Parry(){
+        AddYCancelingImpulse(-parryKnockbackImpulse*blade.SwingDirection);
+        Pogo();
+        blade.SetSwinging(false);
     }
     private void Pogo(){
         if (blade.HasPogoed || blade.SwingDirection != -Vector2.up){

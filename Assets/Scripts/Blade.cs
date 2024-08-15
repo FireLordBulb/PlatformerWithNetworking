@@ -10,6 +10,8 @@ public class Blade : MonoBehaviour {
 
     private const float WholeRotation = 360, HalfRotation = WholeRotation/2;
     private const float FacingRightAngle = 0, FacingLeftAngle = HalfRotation;
+
+    private Player player;
     private float swingSpeed;
     private float endAngle;
     
@@ -22,6 +24,7 @@ public class Blade : MonoBehaviour {
     }
 
     public void SetWielder(Player wielder){
+        player = wielder;
         foreach (BladeHitbox hitbox in hitboxes){
             hitbox.Player = wielder;
             hitbox.Blade = this;
@@ -32,7 +35,7 @@ public class Blade : MonoBehaviour {
         if (IsSwinging){
             return;
         }
-        SetActive(true); 
+        SetSwinging(true); 
         HasPogoed = false;
         // Can't swing downwards when on solid ground.
         if (isOnSolidGround){
@@ -58,7 +61,7 @@ public class Blade : MonoBehaviour {
         // Convert newAngle from "0 to 360"-format to "-180 to +180"-format so it can be correctly compared with endAngle.
         newAngle = (newAngle+HalfRotation)%WholeRotation - HalfRotation;
         if (newAngle < endAngle){
-            SetActive(false);
+            SetSwinging(false);
             return;
         }
         Vector3 eulerAngles = transform.eulerAngles;
@@ -66,8 +69,12 @@ public class Blade : MonoBehaviour {
         transform.eulerAngles = eulerAngles;
     }
 
-    private void SetActive(bool isActive){
-        gameObject.SetActive(isActive);
-        IsSwinging = isActive;
+    public void SetSwinging(bool isSwinging){
+        gameObject.SetActive(isSwinging);
+        IsSwinging = isSwinging;
+        // If you're holding a move direction when swinging ends, you should start to face that direction.
+        if (!isSwinging){
+            player.ReapplyMoveDirection();
+        }
     }
 }

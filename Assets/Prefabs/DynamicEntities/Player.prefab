@@ -778,7 +778,8 @@ MonoBehaviour:
   jumpStartImpulse: 3.2
   jumpHoldForce: 34
   jumpHoldTime: 0.25
-  knockbackImpulse: 5
+  hitKnockbackImpulse: 5
+  parryKnockbackImpulse: 3
   sideUpwardsKnockbackImpulse: 2
   pogoImpulse: 6
   maxHealth: 5
