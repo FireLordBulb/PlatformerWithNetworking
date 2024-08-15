@@ -41,16 +41,15 @@ public class GameManager : MonoBehaviour {
             unusedSpawnIndexes.Push(i);
         }
     }
-    private void OnDestroy(){
-        networkBehaviour.canDie = true;
-    }
-
-    // This has to be a separate class because all NetworkObjects even ones that were always in the
-    // scene, get destroyed when the client disconnects or fails to connect.
+    // This has to be a separate script so I can re-add it when it's destroyed, because all NetworkObjects get destroyed when the client disconnects or fails to connect.
     public void SpawnNetworkBehavior(){
         GameObject emptyChild = Instantiate(new GameObject(), transform);
         emptyChild.AddComponent<NetworkObject>();
         networkBehaviour = emptyChild.AddComponent<GameManagerNetworkBehaviour>();
+    }
+    // Only when the GameManager is destroyed are you allowed to destroy its child networkBehavior..
+    private void OnDestroy(){
+        networkBehaviour.canDie = true;
     }
     
     private void Start(){

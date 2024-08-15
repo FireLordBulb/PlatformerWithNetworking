@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
-using Unity.VisualScripting;
-using UnityEngine;
 
 public class GameManagerNetworkBehaviour : NetworkBehaviour {
 
@@ -15,7 +13,7 @@ public class GameManagerNetworkBehaviour : NetworkBehaviour {
 		gameManager = GameManager.Instance;
 	}
 
-	// It's immortal. You kill it, and its parent spawns another.
+	// It's immortal until the gameManager says it isn't. You kill it, and its parent spawns another.
 	private new void OnDestroy(){
 		if (!canDie){
 			gameManager.SpawnNetworkBehavior();
