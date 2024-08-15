@@ -20,11 +20,13 @@ public class GameManager : MonoBehaviour {
     private GameManagerNetworkBehaviour networkBehaviour;
     private UnityTransport transport;
     private MainMenuUI mainMenu;
-    private readonly List<int> unusedSpawnIndexes = new();
+    private readonly Stack<int> unusedSpawnIndexes = new();
     private readonly Dictionary<ulong, Player> players = new();
     private bool isConnecting;
-    private bool gameIsOngoing;
+    private bool gameHasStarted;
+    private bool gameIsOver;
 
+    public bool PlayersCanMove => gameHasStarted && !gameIsOver;
     private bool IsConnected => NetworkManager.Singleton.IsServer || NetworkManager.Singleton.IsClient || isConnecting;
     
     private void Awake(){
@@ -35,8 +37,8 @@ public class GameManager : MonoBehaviour {
         Instance = this;
         
         SpawnNetworkBehavior();
-        for (int i = 0; i < playerSpawns.Length; i++){
-            unusedSpawnIndexes.Add(i);
+        for (int i = playerSpawns.Length-1; i >= 0; i--){
+            unusedSpawnIndexes.Push(i);
         }
     }
     private void OnDestroy(){
@@ -74,8 +76,7 @@ public class GameManager : MonoBehaviour {
                     mainMenu.SetCurrentPlayersText(NetworkManager.Singleton.ConnectedClients.Count);
                     break;
                 case ConnectionEvent.ClientDisconnected:
-                    // Insert at the start to prevent joining then disconnecting then joining again from letting a player cycle through different spawns.
-                    unusedSpawnIndexes.Insert(0, players[eventData.ClientId].SpawnIndex);
+                    unusedSpawnIndexes.Push(players[eventData.ClientId].SpawnIndex);
                     RemovePlayer(eventData.ClientId);
                     break;
                 case ConnectionEvent.PeerConnected:
@@ -100,7 +101,7 @@ public class GameManager : MonoBehaviour {
     }
     
     private void SpawnPlayer(NetworkManager manager, ulong clientId){
-        if (gameIsOngoing){
+        if (gameHasStarted){
             networkBehaviour.SendCantJoinRpc(true, clientId);
             manager.DisconnectClient(clientId);
             return;
@@ -110,15 +111,15 @@ public class GameManager : MonoBehaviour {
             manager.DisconnectClient(clientId);
             return;
         }
-        Transform playerSpawn = playerSpawns[unusedSpawnIndexes[0]];
+        int spawnIndex = unusedSpawnIndexes.Pop();
+        Transform playerSpawn = playerSpawns[spawnIndex];
         Player newPlayer = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
         newPlayer.NetworkObject.SpawnWithOwnership(clientId);
         if (playerSpawn.rotation.y != 0){
             newPlayer.SetBodySprite(true);
         }
+        newPlayer.SpawnIndex = spawnIndex;
         players.Add(clientId, newPlayer);
-        newPlayer.SpawnIndex = unusedSpawnIndexes[0];
-        unusedSpawnIndexes.RemoveAt(0);
     }
     
     public void StartClient(string ipAddress){
@@ -163,11 +164,11 @@ public class GameManager : MonoBehaviour {
         networkBehaviour.StartGameRpc();
     }
     public void StartGame(){
-        if (gameIsOngoing){
+        if (gameHasStarted){
             return;
         }
         // TODO enable input.
-        gameIsOngoing = true;
+        gameHasStarted = true;
         mainMenu.SwapToHud();
     }
 
@@ -183,14 +184,14 @@ public class GameManager : MonoBehaviour {
 
     public void RemovePlayer(ulong playerClientId){
         players.Remove(playerClientId);
-        if (!gameIsOngoing || players.Count != 1){
+        if (!gameHasStarted || players.Count != 1){
             return;
         }
         networkBehaviour.GameIsOverRpc(players.ToList()[0].Value.OwnerClientId);
     }
 
     public void EndGame(ulong winnerClientId){
-        gameIsOngoing = false;
+        gameHasStarted = false;
         mainMenu.SwapToGameOverPage(winnerClientId == NetworkManager.Singleton.LocalClientId);
     }
 }
