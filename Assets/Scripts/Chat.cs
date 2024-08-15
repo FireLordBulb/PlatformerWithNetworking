@@ -19,8 +19,6 @@ public class Chat : MonoBehaviour {
     public TextMeshProUGUI Text => text;
     public ChatManager ChatManager {get; set;}
     
-    private bool chatHasBeenActivated;
-    
     private void Awake(){
         if (Instance != null){
             Destroy(gameObject);
@@ -33,12 +31,7 @@ public class Chat : MonoBehaviour {
             if (!GameManager.Instance.GameIsOngoing){
                 return;
             }
-            if (!chatHasBeenActivated){
-                chatHasBeenActivated = true;
-                if (NetworkManager.Singleton.IsServer){
-                    Instantiate(chatManagerPrefab).GetComponent<NetworkObject>().Spawn();
-                }
-            }
+            
             gameObject.SetActive(!gameObject.activeSelf);
             if (gameObject.activeSelf){
                 inputField.ActivateInputField();
@@ -60,6 +53,12 @@ public class Chat : MonoBehaviour {
         inputField.onDeselect.AddListener(_ => {
             gameObject.SetActive(false);
         });
+    }
+
+    public void Activate(){
+        if (NetworkManager.Singleton.IsServer){
+            Instantiate(chatManagerPrefab).GetComponent<NetworkObject>().Spawn();
+        }
     }
     
     public void SetPlaceholderText(string placeholderText){

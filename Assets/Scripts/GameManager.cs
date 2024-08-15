@@ -167,6 +167,7 @@ public class GameManager : MonoBehaviour {
         }
         gameHasStarted = true;
         mainMenu.SwapToHud();
+        Chat.Instance.Activate();
     }
 
     public void CantJoin(bool gameHasStartedOnServer){
