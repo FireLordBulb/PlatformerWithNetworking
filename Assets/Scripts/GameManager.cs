@@ -190,5 +190,6 @@ public class GameManager : MonoBehaviour {
         gameIsOver = true;
         Chat.Instance.gameObject.SetActive(false);
         mainMenu.SwapToGameOverPage(winnerClientId == NetworkManager.Singleton.LocalClientId);
+        players.ToList()[0].Value.SetMoveDirection(Vector2.zero);
     }
 }

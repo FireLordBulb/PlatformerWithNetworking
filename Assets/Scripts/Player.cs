@@ -93,7 +93,7 @@ public class Player : NetworkBehaviour {
             localCurrentDirection = direction;
         }
     }
-    public void SetSpriteRotation(float rotation){
+    private void SetSpriteRotation(float rotation){
         if (blade.IsSwinging){
             return;
         }
