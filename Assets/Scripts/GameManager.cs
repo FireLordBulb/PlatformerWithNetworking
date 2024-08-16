@@ -188,6 +188,7 @@ public class GameManager : MonoBehaviour {
 
     public void EndGame(ulong winnerClientId){
         gameIsOver = true;
+        Chat.Instance.gameObject.SetActive(false);
         mainMenu.SwapToGameOverPage(winnerClientId == NetworkManager.Singleton.LocalClientId);
     }
 }

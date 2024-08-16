@@ -244,7 +244,7 @@ public class Player : NetworkBehaviour {
         rigidBody.AddForce(new Vector2(0, jumpHoldForce), ForceMode2D.Force);
     }
     
-    [Rpc(SendTo.Everyone)]
+    [Rpc(SendTo.NotOwner)]
     private void StartSwingingRpc(RpcParams rpcParams = default){
         if (Util.SenderIsServer(rpcParams)){
             blade.StartSwinging(CurrentDirection.y, isOnSolidGround);
